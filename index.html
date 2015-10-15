@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<title>Movie History</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">Movie History</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Where would you like to search?<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a>New Movie From OMDb</a></li>
+            <li><a>My Movies</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Ferris Bueller's Day Off">
+        </div>
+	      <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a>Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row">
+	<ul class="nav nav-pills col-md-offset-1 col-md-11">
+	  <li role="presentation" class="active"><a>All</a></li>
+	  <li role="presentation"><a>Watched</a></li>
+	  <li role="presentation"><a>To Be Watched</a></li>
+	</ul>
+</div>
+
+<section class="row" id="myMovies">
+	<!-- This section, at a minimum, will be transitioned to a handlebars template to loop through data -->
+<div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>Ferris Bueller's Day Off</p>
+	</div>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
+  	<div class="panel-footer">
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+		  <button class="pull-right">To Be Watched</button>
+		</div>
+</div>
+
+<div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>Ferris Bueller's Day Off</p>
+	</div>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
+  	<div class="panel-footer">
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+		  <button class="pull-right">To Be Watched</button>
+		</div>
+</div>
+
+<div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>Ferris Bueller's Day Off</p>
+	</div>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
+  	<div class="panel-footer">
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+		  <button class="pull-right">To Be Watched</button>
+		</div>
+</div>
+
+
+</section>
+
+
+<!-- Remove these script links once javascripts/main is setup -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
