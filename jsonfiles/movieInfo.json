@@ -6,24 +6,27 @@
 
 			{
 			"email": "name@email.com",
-			"moviesAdded": [
-			{
+			"moviesAdded": 
+				{
 				"title": "movie title",
 				"year": "1999",
+				"imdbID":"tt0412019",
 				"actors": ["Martin", "Jonathan","Mohamed"],
 				"myRating": "7",
 				"watched": "true"
-			},
-			]
+				},
+			
 
-		{
-			"title": "another movie title",
-			"year": "1998",
-			"imdbID":"tt0412019"
-			"actors": ["Martin", "Jonathan","Mohamed"],
-			"myRating": "6",
-			"watched": "false"
-
+			"moviesWatched":
+				{
+				"title": "another movie title",
+				"year": "1998",
+				"imdbID":"tt0412019",
+				"actors": ["Martin", "Jonathan","Mohamed"],
+				"myRating": "6",
+				"watched": "false"
+				}
+			}
 		}
 	]
 }
