@@ -1,3 +1,4 @@
+
 requirejs.config({
   baseUrl: './javascripts',
   paths: {
@@ -9,16 +10,31 @@ requirejs.config({
   },
   shim: {
     'bootstrap': ['jquery'],
-    'firebase': {
-            exports: 'Firebase'
-           }
+    'firebase': {exports: 'Firebase'}
   }
 });
 
 requirejs(
-  ["jquery", "hbs", "bootstrap", "lodash", "q","getLogin"],
-  function($, Handlebars, bootstrap, _, q, getLogin) {
+  ["jquery", "hbs", "bootstrap", "lodash", "q", "getData", "loginRegister"],
+  function($, Handlebars, bootstrap, _, q, getData, loginRegister) {
 
-
-
+  $('#searchButton').click(function(){
+    getData.OMDbSearch($('#searchText').val());
   });
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+

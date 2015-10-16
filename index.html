@@ -3,12 +3,11 @@
 <head>
   <title>Movie History</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+
  <!-- added the two scripts below to see if the modal window is working-->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
+  
 <body>
 
 <!-- ==========Modal Below============ -->
@@ -24,13 +23,13 @@
           <h4 class="modal-title">Please Login or Register to Start!</h4>
         </div>
         <div class="modal-body">
-        <form class="navbar-form" role="search">
+        <div class="navbar-form" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter Email Address">
-          <input type="text" class="form-control" placeholder="Enter Password">
+          <input type="email/username" id="email" class="form-control" placeholder="Enter Email Address">
+          <input type="password" id="pwd" class="form-control" placeholder="Enter Password">
         </div>
-        <button type="submit" class="btn btn-default">Login/Register</button>
-      </form>
+        <button type="submit" id="submit" class="btn btn-default">Login/Register</button>
+      </div>
           <!-- <p>Some text in the modal.</p> -->
         </div>
         <div class="modal-footer">
@@ -141,7 +140,6 @@
 
 
 <!-- Remove these script links once javascripts/main is setup -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script data-main="javascripts/main" src="../lib/bower_components/requirejs/require.js"></script>
 </body>
 </html>
