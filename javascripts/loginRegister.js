@@ -8,8 +8,6 @@ define(["firebase"], function(firebase) {
 	// }
 	var ref = new firebase("https://nss-movie-history.firebaseio.com");
 
-	var loggedInUID;
-
 	return {
 		getLogin: function(email, password) {
 			ref.authWithPassword({
@@ -20,7 +18,6 @@ define(["firebase"], function(firebase) {
 		    		console.log("Login Failed!", error);
 		  		} else {
 		    		console.log("Authenticated successfully with payload:", authData);
-		    		loggedInUID = authData.uid;
 		  		}
 			});
 		},
@@ -42,9 +39,7 @@ define(["firebase"], function(firebase) {
 	    			ref.child('users').child(userData.uid).set(newUser);
 	  			}
 			});
-		},
-		getCurrentUser: function(){
-			return loggedInUID;
+
 		}
 	};
 });
