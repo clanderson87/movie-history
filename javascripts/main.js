@@ -24,9 +24,20 @@ requirejs(
   $('#searchOMDbButton').click(function(){
     dataControl.OMDbSearch($('#searchText').val())
     .then(function(OMDbSearchResults) {
+      console.log("data returned from promise");
       console.log("'search' array in object returned", OMDbSearchResults);
+      var OMDbMovie = OMDbSearchResults.map(function(currentValue, i, array) {
+        console.log("imdbID", array[i].imdbID);
+        return {
+          title: array[i].Title,
+          year: array[i].Year,
+          imdbID: array[i].imdbID,
+          poster: "http://img.omdbapi.com/?i=" + array[i].imdbID + "&apikey=8513e0a1"
+        };
+      });
+      console.log("new OMDbMovie object", OMDbMovie);
       require(['hbs!../templates/addMovie'], function(addMovie) {
-        $('#OMDbSearchResults').html(addMovie({movies: OMDbSearchResults}));
+        $('#OMDbSearchResults').html(addMovie({movies: OMDbMovie}));
       });
       $('#addMovieModal').modal();
     });
