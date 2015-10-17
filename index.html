@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <title>Movie History</title>
-	<meta charset="UTF-8">
-	<!-- <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
 
  <!-- added the two scripts below to see if the modal window is working-->
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   
+</head>
 <body>
 
 <!-- ==========Modal Below============ -->
@@ -44,6 +45,7 @@
 
 <!-- ===========Modal above============ -->
 
+<header>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -68,12 +70,12 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <div class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Ferris Bueller's Day Off">
+          <input type="text" class="form-control" id="searchText" placeholder="Ferris Bueller's Day Off">
         </div>
-	      <button type="submit" class="btn btn-default">Search</button>
-      </form>
+        <button type="submit" class="btn btn-default" id="searchButton">Search</button>
+      </div>
       <ul class="nav navbar-nav navbar-right">
        <!-- commenting out the logout below to work on the modal button. -->
         <!-- <li><a>Logout</a></li> -->
@@ -88,6 +90,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+</header>
 
 <div class="row">
 	<ul class="nav nav-pills col-md-offset-1 col-md-11">
