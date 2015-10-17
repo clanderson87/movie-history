@@ -16,8 +16,10 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery", "hbs", "bootstrap", "lodash", "q", "dataControl", "loginRegister"],
-  function($, Handlebars, bootstrap, _, q, dataControl, loginRegister) {
+  ["jquery", "hbs", "bootstrap", "lodash", "q", "firebase", "dataControl", "loginRegister"],
+  function($, Handlebars, bootstrap, _, q, Firebase, dataControl, loginRegister) {
+
+  var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com")
 
   loginRegister.getLogin("mncross@gmail.com", "abc");
 
