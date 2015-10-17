@@ -27,7 +27,7 @@ define(function(require) {
 		var newUser ={
 			useremail: $('#email').val(),
 			userpass: $('#pwd').val()
-		}
+		};
 	
 		var ref = new Firebase("https://nss-movie-history.firebaseio.com");
 			ref.createUser({
@@ -45,7 +45,7 @@ define(function(require) {
 
 	// authorizes user
 	function authuser(id, userLoginInfo){
-		console.log(userLoginInfo)
+		console.log(userLoginInfo);
 		var ref = new Firebase("https://nss-movie-history.firebaseio.com");
 			ref.authWithPassword({
   			email    : userLoginInfo.useremail,
@@ -59,7 +59,7 @@ define(function(require) {
     		createUserData(authData);
   		}
 		});
-	};
+	}
 
 	//creates user variable to create json data
 	function createUserData(userData){
@@ -69,24 +69,24 @@ define(function(require) {
 	}
 
 
-})
-
-
-
-
-  var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { "https://nss-movie-history.firebaseio.com" });
-authClient.createUser(email, password, function(error, user) {
-    if (error === null) {
-      console.log("User created successfully:", user);
-      } else {
-        console.log("Error creating user:", error);
-      }
 });
 
 
-var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { "https://nss-movie-history.firebaseio.com" });
-authClient.login('password', {
-  email: '<email@domain.com>',
-  password: '<password>'
-  rememberMe: true
-});
+
+
+//   var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { "https://nss-movie-history.firebaseio.com" });
+// authClient.createUser(email, password, function(error, user) {
+//     if (error === null) {
+//       console.log("User created successfully:", user);
+//       } else {
+//         console.log("Error creating user:", error);
+//       }
+// });
+
+
+// var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { "https://nss-movie-history.firebaseio.com" });
+// authClient.login('password', {
+//   email: '<email@domain.com>',
+//   password: '<password>'
+//   rememberMe: true
+// });
