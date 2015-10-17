@@ -34,10 +34,11 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 			var newMovie = {
 				title: movieObject.Title,
 				year: movieObject.Year,
-				actors: movieObject.Actors.replace(/(, )/g, "|").split('|')
+				actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+				watched: false
 			};
 			console.log("newMovie to be added", newMovie);
-			firebaseRef.child('users').child(uid).child(movieObject.imdbID).set(newMovie);
+			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		}
 	};
 });
