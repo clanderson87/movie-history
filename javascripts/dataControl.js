@@ -39,6 +39,20 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 			};
 			console.log("newMovie to be added", newMovie);
 			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
+		},
+		
+		getUsersMovies: function(uid) {
+			var deferred = q.defer();
+			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
+			.done(function(userMovies) {
+				console.log("userMovies", userMovies);
+
+				deferred.resolve(userMovies);
+			})
+			.fail(function() {
+				console.log("getUsersMovies was a fail");
+			});
+			return deferred.promise;
 		}
 	};
 });

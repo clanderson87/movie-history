@@ -16,10 +16,17 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery", "hbs", "bootstrap", "lodash", "q", "dataControl", "loginRegister"],
-  function($, Handlebars, bootstrap, _, q, dataControl, loginRegister) {
-
+  ["jquery", "hbs", "bootstrap", "lodash", "q", "firebase", "dataControl", "loginRegister"],
+  function($, Handlebars, bootstrap, _, q, Firebase, dataControl, loginRegister) {
+    var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
   loginRegister.getLogin("mncross@gmail.com", "abc");
+
+// Get users movies is being passed the return value of getCurrentUser to retrive firebase movies
+
+  
+  dataControl.getUsersMovies(firebaseRef.getAuth().uid);
+
+
 
   $('#searchOMDbButton').click(function(){
     dataControl.OMDbSearch($('#searchText').val())
@@ -31,6 +38,13 @@ requirejs(
       $('#addMovieModal').modal();
     });
   });
+
+
+    // require(['hbs!../templates/main'], function(mainTpl) {
+    //   $("#myMovies").html(mainTpl({movies}));
+    // });
+
+ 
 
   $(document).on('click', '.addMovieButton', function() {
     var thisMovie = $(this).attr("imdbid");

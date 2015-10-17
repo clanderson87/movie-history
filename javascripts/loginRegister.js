@@ -44,6 +44,8 @@ define(["firebase"], function(firebase) {
 			});
 		},
 		getCurrentUser: function(){
+			
+			console.log("getCurrentUser", loggedInUID);
 			return loggedInUID;
 		}
 	};
