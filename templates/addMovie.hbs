@@ -1,0 +1,13 @@
+{{#each movies}}
+<div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>{{Title}} ({{Year}})</p>
+	</div>
+    <img src={{Poster}} alt="{{Title}}" class="img-responsive center-block">
+  	<div class="panel-footer">
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+		  <button class="pull-right addMovieButton" imdbid="{{imdbID}}" id="addMovieButton#{{imdbID}}">Add this movie</button>
+		</div>
+</div>
+{{/each}}

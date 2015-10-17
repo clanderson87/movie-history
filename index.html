@@ -5,92 +5,105 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
-
- <!-- added the two scripts below to see if the modal window is working-->
-  
 </head>
 <body>
 
-<!-- ==========Modal Below============ -->
+<!-- ===========Login/Register Modal below============ -->
+<!-- Modal -->
+<div class="modal fade" id="loginRegisterModal" role="dialog">
+  <div class="modal-dialog">
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Please Login or Register to Start!</h4>
-        </div>
-        <div class="modal-body">
-        <div class="navbar-form" role="search">
-        <div class="form-group">
-          <input type="email/username" id="email" class="form-control" placeholder="Enter Email Address">
-          <input type="password" id="pwd" class="form-control" placeholder="Enter Password">
-        </div>
-        <button id="submit" class="btn btn-default">Login</button>
-        <button id="registerButton" class="btn btn-default">Register</button>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Please Login or Register to Start!</h4>
       </div>
-          <!-- <p>Some text in the modal.</p> -->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+      <div class="modal-body">
+      <div class="navbar-form" role="search">
+      <div class="form-group">
+        <input type="email/username" id="email" class="form-control" placeholder="Enter Email Address">
+        <input type="password" id="pwd" class="form-control" placeholder="Enter Password">
       </div>
-      
+      <button id="submit" class="btn btn-default">Login</button>
+      <button id="registerButton" class="btn btn-default">Register</button>
     </div>
+        <!-- <p>Some text in the modal.</p> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
-  
 </div>
+<!-- ===========Login/Register Modal above============ -->
+<!-- ===========Add Movie Modal below============ -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="addMovieModal" role="dialog">
+  <div class="modal-dialog modal-lg">
 
-<!-- ===========Modal above============ -->
-
-<header>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand">Movie History</a>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" id="OMDbSearchResults">
+      <!-- Insert addMovie.hbs here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Where would you like to search?<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a>New Movie From OMDb</a></li>
-            <li><a>My Movies</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" id="searchText" placeholder="Ferris Bueller's Day Off">
-        </div>
-        <button type="submit" class="btn btn-default" id="searchButton">Search</button>
+  </div>
+</div>
+<!-- ===========Add Movie Modal above============ -->
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Movie History</a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-       <!-- commenting out the logout below to work on the modal button. -->
-        <!-- <li><a>Logout</a></li> -->
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Where would you like to search?<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a>New Movie From OMDb</a></li>
+              <li><a>My Movies</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" id="searchText" placeholder="Ferris Bueller's Day Off">
+          </div>
+          <button type="submit" class="btn btn-default" id="searchOMDbButton">Search OMDb</button>
+          <button type="submit" class="btn btn-default" id="searchMyMoviesButton">Search My Movies</button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+         <!-- commenting out the logout below to work on the modal button. -->
+          <!-- <li><a>Logout</a></li> -->
 
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Login/Register</button>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#loginRegisterModal">Login/Register</button>
 
 
 
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 </header>
 
 <div class="row">
