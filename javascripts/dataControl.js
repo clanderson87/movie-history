@@ -31,22 +31,32 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 		addUserMovie: function(uid, movieObject) {
 			console.log("uid", uid);
 			console.log("movieObject", movieObject);
-			var newMovie = {
-				title: movieObject.Title,
-				year: movieObject.Year,
-				actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
-				watched: false
+			if (movieObject.Poster == "N/A") {
+				var newMovie = {
+					title: movieObject.Title,
+					year: movieObject.Year,
+					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					watched: false,
+					poster: "http://www.chabotcollege.edu/Library/subjectindex/film.jpg"
+				};
+			} else{
+				var newMovie = {
+					title: movieObject.Title,
+					year: movieObject.Year,
+					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					watched: false,
+					poster: "http://img.omdbapi.com/?i=" + movieObject.imdbID + "&apikey=8513e0a1"
+				};
 			};
 			console.log("newMovie to be added", newMovie);
 			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
-		
+
 		getUsersMovies: function(uid) {
 			var deferred = q.defer();
 			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
 			.done(function(userMovies) {
 				console.log("userMovies", userMovies);
-
 				deferred.resolve(userMovies);
 			})
 			.fail(function() {
@@ -56,3 +66,5 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 		}
 	};
 });
+
+

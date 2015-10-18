@@ -1,13 +1,28 @@
 {{#each movies}}
 <div class="panel panel-default col-md-4">
 	<div class="panel-heading">
-	  <p>{{Title}} ({{Year}})</p>
+	  <p>{{title}} ({{year}})</p>
 	</div>
-    <img src={{Poster}} alt="{{Title}}" class="img-responsive center-block">
+    <img src={{poster}} alt="{{title}}" class="img-responsive center-block">
   	<div class="panel-footer">
 		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
-		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+    <div class="stars" id="ratingsFors">
+        <input type="radio" name="star" class="star-1" id="star-1" />
+        <label class="star-1" for="star-1">1</label>
+        <input type="radio" name="star" class="star-2" id="star-2" />
+        <label class="star-2" for="star-2">2</label>
+        <input type="radio" name="star" class="star-3" id="star-3" />
+        <label class="star-3" for="star-3">3</label>
+        <input type="radio" name="star" class="star-4" id="star-4" />
+        <label class="star-4" for="star-4">4</label>
+        <input type="radio" name="star" class="star-5" id="star-5" />
+        <label class="star-5" for="star-5">5</label>
+        <input type="radio" name="star" class="star-6" id="star-6" />
+        <label class="star-5" for="star-5">5</label>
+        </div>
+        <span></span>
+	 	  
 		  <button class="pull-right addMovieButton" imdbid="{{imdbID}}" id="addMovieButton#{{imdbID}}">Add this movie</button>
 		</div>
-</div>
+	</div>
 {{/each}}

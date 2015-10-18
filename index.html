@@ -31,7 +31,7 @@
         <!-- <p>Some text in the modal.</p> -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-Primary" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -104,8 +104,11 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  
+        <marquee><h1>Enjoy Your Movie Search</h1></marquee>
 </header>
-
+<div class="text-slide">
+</div>
 <div class="row">
 	<ul class="nav nav-pills col-md-offset-1 col-md-11">
 	  <li role="presentation" class="active"><a>All</a></li>
@@ -119,7 +122,42 @@
 <!-- commenting out the below and inserting using hbs. will delete once it is in working order -->
 
 	<!-- This section, at a minimum, will be transitioned to a handlebars template to loop through data -->
-<!-- <div class="panel panel-default col-md-4">
+ <div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>Ferris Bueller's Day Off</p>
+	</div>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
+  	<div class="panel-footer"> 
+
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+		   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+        <form id="ratingsForm">
+    <div class="stars">
+        <input type="radio" name="star" class="star-1" id="star-1" />
+        <label class="star-1" for="star-1">1</label>
+        <input type="radio" name="star" class="star-2" id="star-2" />
+        <label class="star-2" for="star-2">2</label>
+        <input type="radio" name="star" class="star-3" id="star-3" />
+        <label class="star-3" for="star-3">3</label>
+        <input type="radio" name="star" class="star-4" id="star-4" />
+        <label class="star-4" for="star-4">4</label>
+        <input type="radio" name="star" class="star-5" id="star-5" />
+        <label class="star-5" for="star-5">5</label>
+        <input type="radio" name="star" class="star-6" id="star-6" />
+        <label class="star-5" for="star-5">5</label>
+        
+        <span></span>
+    </div>
+</form>
+   
+</fieldset>
+
+ 		  
+      <button class="pull-right">To Be Watched</button>
+		</div>
+</div>
+
+<div class="panel panel-default col-md-4">
 	<div class="panel-heading">
 	  <p>Ferris Bueller's Day Off</p>
 	</div>
@@ -127,7 +165,24 @@
   	<div class="panel-footer"> -->
 
 		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
-<!-- 		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+		   <form id="ratingsForm">
+    <div class="stars">
+        <input type="radio" name="star" class="star-1" id="star-1" />
+        <label class="star-1" for="star-1">1</label>
+        <input type="radio" name="star" class="star-2" id="star-2" />
+        <label class="star-2" for="star-2">2</label>
+        <input type="radio" name="star" class="star-3" id="star-3" />
+        <label class="star-3" for="star-3">3</label>
+        <input type="radio" name="star" class="star-4" id="star-4" />
+        <label class="star-4" for="star-4">4</label>
+        <input type="radio" name="star" class="star-5" id="star-5" />
+        <label class="star-5" for="star-5">5</label>
+        <span></span>
+    </div>
+</form>
+   
+</fieldset>
+
 		  <button class="pull-right">To Be Watched</button>
 		</div>
 </div>
@@ -140,24 +195,26 @@
   	<div class="panel-footer"> -->
 
 		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
-		  <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+
+<form id="ratingsForm">
+    <div class="stars">
+        <input type="radio" name="star" class="star-1" id="star-1" />
+        <label class="star-1" for="star-1">1</label>
+        <input type="radio" name="star" class="star-2" id="star-2" />
+        <label class="star-2" for="star-2">2</label>
+        <input type="radio" name="star" class="star-3" id="star-3" />
+        <label class="star-3" for="star-3">3</label>
+        <input type="radio" name="star" class="star-4" id="star-4" />
+        <label class="star-4" for="star-4">4</label>
+        <input type="radio" name="star" class="star-5" id="star-5" />
+        <label class="star-5" for="star-5">5</label>
+        <span></span>
+    </div>
+</form>
+		 
 		  <button class="pull-right">To Be Watched</button>
 		</div>
 </div>
-
-<div class="panel panel-default col-md-4">
-	<div class="panel-heading">
-	  <p>Ferris Bueller's Day Off</p>
-	</div>
-    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
-  	<div class="panel-footer"> -->
-
-		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
-		 <!--  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
-		  <button class="pull-right">To Be Watched</button>
-		</div>
-</div>
- -->
 
 </section>
 

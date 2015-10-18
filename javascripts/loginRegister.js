@@ -8,8 +8,6 @@ define(["firebase", "dataControl"], function(firebase, dataControl) {
 	// }
 	var ref = new firebase("https://nss-movie-history.firebaseio.com");
 
-	var loggedInUID;
-
 	return {
 		getLogin: function(email, password) {
 			ref.authWithPassword({
@@ -47,11 +45,7 @@ define(["firebase", "dataControl"], function(firebase, dataControl) {
 	    			ref.child('users').child(userData.uid).set(newUser);
 	  			}
 			});
-		},
-		getCurrentUser: function(){
-			
-			console.log("getCurrentUser", loggedInUID);
-			return loggedInUID;
+
 		}
 
 
