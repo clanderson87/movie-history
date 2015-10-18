@@ -58,12 +58,12 @@ requirejs(
   $(document).on('click', '.addMovieButton', function() {
     var thisMovie = $(this).attr("imdbid");
     console.log(thisMovie);
-    var currentUser = loginRegister.getCurrentUser();
-    console.log("currentUser", currentUser);
-    $('#addMovieModal').modal('hide');
     dataControl.OMDbIDSearch(thisMovie)
     .then(function(OMDbExactMatch) {
+      $('#addMovieModal').modal('hide');
       console.log("OMDb exact match", OMDbExactMatch);
+      var currentUser = firebaseRef.getAuth().uid;
+      console.log("currentUser", currentUser);
       dataControl.addUserMovie(currentUser, OMDbExactMatch);
     });
   });

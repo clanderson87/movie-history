@@ -32,13 +32,21 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 			console.log("uid", uid);
 			console.log("movieObject", movieObject);
 			if (movieObject.Poster == "N/A") {
-
-			} else{};
-			var newMovie = {
-				title: movieObject.Title,
-				year: movieObject.Year,
-				actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
-				watched: false
+				var newMovie = {
+					title: movieObject.Title,
+					year: movieObject.Year,
+					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					watched: false,
+					poster: "http://www.chabotcollege.edu/Library/subjectindex/film.jpg"
+				};
+			} else{
+				var newMovie = {
+					title: movieObject.Title,
+					year: movieObject.Year,
+					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					watched: false,
+					poster: "http://img.omdbapi.com/?i=" + movieObject.imdbID + "&apikey=8513e0a1"
+				};
 			};
 			console.log("newMovie to be added", newMovie);
 			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
