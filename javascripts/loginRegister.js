@@ -1,4 +1,4 @@
-define(["firebase"], function(firebase) {
+define(["firebase", "dataControl"], function(firebase, dataControl) {
 
 	//creates user variable to create json data
 	// function createUserData(userData){
@@ -18,6 +18,12 @@ define(["firebase"], function(firebase) {
 		    		console.log("Login Failed!", error);
 		  		} else {
 		    		console.log("Authenticated successfully with payload:", authData);
+		    		dataControl.getUsersMovies(authData.uid)
+		    		.then(function(moviesReturnedByPromise){
+    					require(['hbs!../templates/main'], function(mainTpl) {
+      						$("#myMovies").html(mainTpl({movies: moviesReturnedByPromise}));
+		    			});
+    				});
 		  		}
 			});
 		},
@@ -41,6 +47,9 @@ define(["firebase"], function(firebase) {
 			});
 
 		}
+
+
+
 	};
 });
 

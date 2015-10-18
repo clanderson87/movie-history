@@ -53,11 +53,6 @@ requirejs(
     });
   });
 
-
-    // require(['hbs!../templates/main'], function(mainTpl) {
-    //   $("#myMovies").html(mainTpl({movies}));
-    // });
-
  
 
   $(document).on('click', '.addMovieButton', function() {
