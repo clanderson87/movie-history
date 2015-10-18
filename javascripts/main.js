@@ -1,4 +1,3 @@
-
 requirejs.config({
   baseUrl: './javascripts',
   paths: {
@@ -18,18 +17,12 @@ requirejs.config({
 requirejs(
   ["jquery", "hbs", "bootstrap", "lodash", "q", "firebase", "dataControl", "loginRegister"],
   function($, Handlebars, bootstrap, _, q, Firebase, dataControl, loginRegister) {
-    var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
- 
+  var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
   loginRegister.getLogin("mncross@gmail.com", "abc");
 
-// Get users movies is being passed the return value of getCurrentUser to retrive firebase movies
-
-  
   dataControl.getUsersMovies(firebaseRef.getAuth().uid);
-
-
 
   $('#searchOMDbButton').click(function(){
     dataControl.OMDbSearch($('#searchText').val())
@@ -38,11 +31,20 @@ requirejs(
       console.log("'search' array in object returned", OMDbSearchResults);
       var OMDbMovie = OMDbSearchResults.map(function(currentValue, i, array) {
         console.log("imdbID", array[i].imdbID);
-        return {
-          title: array[i].Title,
-          year: array[i].Year,
-          imdbID: array[i].imdbID,
-          poster: "http://img.omdbapi.com/?i=" + array[i].imdbID + "&apikey=8513e0a1"
+        if (array[i].Poster === "N/A") {
+          return {
+            title: array[i].Title,
+            year: array[i].Year,
+            imdbID: array[i].imdbID,
+            poster: "http://www.chabotcollege.edu/Library/subjectindex/film.jpg"
+          };
+        } else{
+          return {
+            title: array[i].Title,
+            year: array[i].Year,
+            imdbID: array[i].imdbID,
+            poster: "http://img.omdbapi.com/?i=" + array[i].imdbID + "&apikey=8513e0a1"
+          };
         };
       });
       console.log("new OMDbMovie object", OMDbMovie);
@@ -52,8 +54,6 @@ requirejs(
       $('#addMovieModal').modal();
     });
   });
-
- 
 
   $(document).on('click', '.addMovieButton', function() {
     var thisMovie = $(this).attr("imdbid");
@@ -65,9 +65,6 @@ requirejs(
     .then(function(OMDbExactMatch) {
       console.log("OMDb exact match", OMDbExactMatch);
       dataControl.addUserMovie(currentUser, OMDbExactMatch);
-      // var newMovie = {
-      //   title:
-      // };
     });
   });
 
@@ -79,10 +76,4 @@ requirejs(
     console.log("registerButton clicked");
     loginRegister.getRegister();
   });
-
-
 });
-
-
-
-
