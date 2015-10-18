@@ -31,6 +31,9 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 		addUserMovie: function(uid, movieObject) {
 			console.log("uid", uid);
 			console.log("movieObject", movieObject);
+			if (movieObject.Poster == "N/A") {
+
+			} else{};
 			var newMovie = {
 				title: movieObject.Title,
 				year: movieObject.Year,
@@ -40,13 +43,12 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 			console.log("newMovie to be added", newMovie);
 			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
-		
+
 		getUsersMovies: function(uid) {
 			var deferred = q.defer();
 			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
 			.done(function(userMovies) {
 				console.log("userMovies", userMovies);
-
 				deferred.resolve(userMovies);
 			})
 			.fail(function() {
