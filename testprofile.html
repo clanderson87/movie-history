@@ -4,26 +4,62 @@
   <title>Movie History</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link href="lib/bower_components/bootstrap-star-rating/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
 
-<section class="well well-lg col-md-2 col-md-offset-5" id="loginRegister">
-  <h4 class="center-block" id="loginMessage">Please Login or Register to Start!</h4>
-  <div class="form-group">
-    <input type="email/username" id="email" class="form-control" placeholder="Enter Email Address">
-    <input type="password" id="pwd" class="form-control" placeholder="Enter Password">
-    <div class="center-block">
-      <button id="loginButton" class="btn btn-default">Login</button>
+<!-- ===========Login/Register Modal below============ -->
+<!-- Modal -->
+<div class="modal fade" id="loginRegisterModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Please Login or Register to Start!</h4>
+      </div>
+      <div class="modal-body">
+      <div class="navbar-form" role="search">
+      <div class="form-group">
+        <input type="email/username" id="email" class="form-control" placeholder="Enter Email Address">
+        <input type="password" id="pwd" class="form-control" placeholder="Enter Password">
+      </div>
+      <button id="submit" class="btn btn-default">Login</button>
       <button id="registerButton" class="btn btn-default">Register</button>
     </div>
+        <!-- <p>Some text in the modal.</p> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-Primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
-<<<<<<< HEAD
+</div>
+<!-- ===========Login/Register Modal above============ -->
+<!-- ===========Add Movie Modal below============ -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="addMovieModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" id="OMDbSearchResults">
+      <!-- Insert addMovie.hbs here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 <!-- ===========Add Movie Modal above============ -->
 <header>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -62,13 +98,11 @@
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#loginRegisterModal">Login/Register</button>
 
-
-
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  
+
         <marquee><h1>Enjoy Your Movie Search</h1></marquee>
 </header>
 <div class="text-slide">
@@ -91,7 +125,7 @@
 	  <p>Ferris Bueller's Day Off</p>
 	</div>
     <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
-  	<div class="panel-footer"> 
+  	<div class="panel-footer">
 
 		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
 		   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
@@ -109,14 +143,14 @@
         <label class="star-5" for="star-5">5</label>
         <input type="radio" name="star" class="star-6" id="star-6" />
         <label class="star-5" for="star-5">5</label>
-        
+
         <span></span>
     </div>
 </form>
-   
+
 </fieldset>
 
- 		  
+
       <button class="pull-right">To Be Watched</button>
 		</div>
 </div>
@@ -126,7 +160,7 @@
 	  <p>Ferris Bueller's Day Off</p>
 	</div>
     <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
-  	<div class="panel-footer"> -->
+  	<div class="panel-footer">
 
 		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
 		   <form id="ratingsForm">
@@ -144,7 +178,7 @@
         <span></span>
     </div>
 </form>
-   
+
 </fieldset>
 
 		  <button class="pull-right">To Be Watched</button>
@@ -175,17 +209,15 @@
         <span></span>
     </div>
 </form>
-		 
+
 		  <button class="pull-right">To Be Watched</button>
 		</div>
 </div>
 
-=======
->>>>>>> e3f859e2e4501c3381481157dcf2a147cef16fff
 </section>
 
-<section class="row" id="myMovies"></section>
 
+<!-- Remove these script links once javascripts/main is setup -->
 <script data-main="javascripts/main" src="../lib/bower_components/requirejs/require.js"></script>
 </body>
 </html>
