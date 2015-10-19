@@ -1,4 +1,5 @@
-define(["jquery", "q", "firebase"], function($, q, firebase) {
+define(["jquery", "q", "firebase"],
+	function($, q, firebase) {
 
 	var firebaseRef = new firebase("https://nss-movie-history.firebaseio.com/");
 

@@ -3,10 +3,10 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 	var firebaseRef = new firebase("https://nss-movie-history.firebaseio.com");
 
 	return {
-		getLogin: function() {
+		getLogin: function(email, password) {
 			firebaseRef.authWithPassword({
-					email 	 : $('#email').val(),
-					password : $('#pwd').val()
+					email 	 : email/*$('#email').val()*/,
+					password : password/*$('#pwd').val()*/
 			}, function(error, authData) {
 				if (error) {
 					console.log("Login Failed!", error);

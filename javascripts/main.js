@@ -17,14 +17,14 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery", "hbs", "bootstrap", "bootstrap-star-rating", "lodash", "q", "firebase", "dataControl", "loginRegister", "domControl"],
-  function($, Handlebars, bootstrap, bootstrapStarRating, _, q, Firebase, dataControl, loginRegister, domControl) {
+  ["jquery", "hbs", "bootstrap", "bootstrap-star-rating", "lodash", "q", "firebase", "dataControl", "loginRegister", "domControl", "filtering"],
+  function($, Handlebars, bootstrap, bootstrapStarRating, _, q, Firebase, dataControl, loginRegister, domControl, filtering) {
 
   var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
-  // loginRegister.getLogin("mncross@gmail.com", "abc");
+  loginRegister.getLogin("mncross@gmail.com", "abc");
 
-  $('#searchOMDbButton').click(function(){
+  $(document).on('click', '#searchOMDbButton', function(){
     dataControl.OMDbSearch($('#searchText').val())
     .then(function(OMDbSearchResults) {
       // console.log("data returned from promise");
@@ -53,6 +53,10 @@ requirejs(
       });
       $('#addMovieModal').modal();
     });
+  });
+
+  $(document).on('click', '#searchMyMoviesButton', function() {
+    filtering.searchMyMovies();
   });
 
   $(document).on('click', '.addMovieButton', function() {
