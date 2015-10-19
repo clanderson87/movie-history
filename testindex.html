@@ -4,7 +4,6 @@
   <title>Movie History</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link href="lib/bower_components/bootstrap-star-rating/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
@@ -116,8 +115,109 @@
 	</ul>
 </div>
 
-<section class="row" id="myMovies"></section>
+<section class="row" id="myMovies">
 
+<!-- commenting out the below and inserting using hbs. will delete once it is in working order -->
+
+	<!-- This section, at a minimum, will be transitioned to a handlebars template to loop through data -->
+ <div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>Ferris Bueller's Day Off</p>
+	</div>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
+  	<div class="panel-footer">
+
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+		   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
+        <form id="ratingsForm">
+    <div class="stars">
+        <input type="radio" name="star" class="star-1" id="star-1" />
+        <label class="star-1" for="star-1">1</label>
+        <input type="radio" name="star" class="star-2" id="star-2" />
+        <label class="star-2" for="star-2">2</label>
+        <input type="radio" name="star" class="star-3" id="star-3" />
+        <label class="star-3" for="star-3">3</label>
+        <input type="radio" name="star" class="star-4" id="star-4" />
+        <label class="star-4" for="star-4">4</label>
+        <input type="radio" name="star" class="star-5" id="star-5" />
+        <label class="star-5" for="star-5">5</label>
+        <input type="radio" name="star" class="star-6" id="star-6" />
+        <label class="star-5" for="star-5">5</label>
+
+        <span></span>
+    </div>
+</form>
+
+</fieldset>
+
+
+      <button class="pull-right">To Be Watched</button>
+		</div>
+</div>
+
+<div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>Ferris Bueller's Day Off</p>
+	</div>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
+  	<div class="panel-footer">
+
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+		   <form id="ratingsForm">
+    <div class="stars">
+        <input type="radio" name="star" class="star-1" id="star-1" />
+        <label class="star-1" for="star-1">1</label>
+        <input type="radio" name="star" class="star-2" id="star-2" />
+        <label class="star-2" for="star-2">2</label>
+        <input type="radio" name="star" class="star-3" id="star-3" />
+        <label class="star-3" for="star-3">3</label>
+        <input type="radio" name="star" class="star-4" id="star-4" />
+        <label class="star-4" for="star-4">4</label>
+        <input type="radio" name="star" class="star-5" id="star-5" />
+        <label class="star-5" for="star-5">5</label>
+        <span></span>
+    </div>
+</form>
+
+</fieldset>
+
+		  <button class="pull-right">To Be Watched</button>
+		</div>
+</div>
+
+<div class="panel panel-default col-md-4">
+	<div class="panel-heading">
+	  <p>Ferris Bueller's Day Off</p>
+	</div>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51t9J3F9ImL._SX200_QL80_.jpg" alt="Ferris Bueller's Day Off poster" class="img-responsive center-block">
+  	<div class="panel-footer"> -->
+
+		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
+
+<form id="ratingsForm">
+    <div class="stars">
+        <input type="radio" name="star" class="star-1" id="star-1" />
+        <label class="star-1" for="star-1">1</label>
+        <input type="radio" name="star" class="star-2" id="star-2" />
+        <label class="star-2" for="star-2">2</label>
+        <input type="radio" name="star" class="star-3" id="star-3" />
+        <label class="star-3" for="star-3">3</label>
+        <input type="radio" name="star" class="star-4" id="star-4" />
+        <label class="star-4" for="star-4">4</label>
+        <input type="radio" name="star" class="star-5" id="star-5" />
+        <label class="star-5" for="star-5">5</label>
+        <span></span>
+    </div>
+</form>
+
+		  <button class="pull-right">To Be Watched</button>
+		</div>
+</div>
+
+</section>
+
+
+<!-- Remove these script links once javascripts/main is setup -->
 <script data-main="javascripts/main" src="../lib/bower_components/requirejs/require.js"></script>
 </body>
 </html>

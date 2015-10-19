@@ -4,14 +4,17 @@
 	  <p>{{title}} {{year}}</p>
 	</div>
 
-	{{!-- leaving ferris poster as placeholder --}}
-    <img src={{poster}} alt="{{title}} poster" class="img-responsive center-block">
-  	<div class="panel-footer">
-		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
-		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
-		  <button class="pull-right">To Be Watched</button>
-		</div>
+  <img src={{poster}} alt="{{title}} poster" class="img-responsive center-block">
+	<div class="panel-footer">
+		<input id="starInput#{{@key}}" imdbid={{@key}} type="number" class="starRating" data-stars=10 value={{rating}}>
+
+	  <button class="pull-right watchedButton btn btn-default" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Not Watched</button>
+		{{!-- {{#if_eq watched true}}
+			<button class="pull-right watchedButton btn btn-success" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Watched</button>
+		{{else}}
+	  <button class="pull-right watchedButton btn btn-default" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Not Watched</button>
+		{{/if_eq}} --}}
+
+	</div>
 </div>
-
-
 {{/each}}
