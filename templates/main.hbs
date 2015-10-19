@@ -1,21 +1,58 @@
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Movie History</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" id="searchText" placeholder="Search for your movie title here">
+          </div>
+          <button type="submit" class="btn btn-default" id="searchOMDbButton">Search OMDb</button>
+          <button type="submit" class="btn btn-default" id="searchMyMoviesButton">Search My Movies</button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+</header>
+<div class="row">
+	<ul class="nav nav-pills col-md-offset-1 col-md-11">
+	  <li><a>All</a></li>
+	  <li><a>Watched</a></li>
+	  <li><a>To Be Watched</a></li>
+	</ul>
+</div>
+
 {{#each movies}}
 <div class="panel panel-default col-md-4">
 	<div class="panel-heading">
 	  <p>{{title}} {{year}}</p>
-
-	</div>
-
+  </div>
+  <div class="posterImage">
+    <button id="delete#{{key}}" imdbid="{{@key}}" type="button" class="close deleteButton">&times;</button>
     <img src={{poster}} alt="{{title}} poster" class="img-responsive center-block">
-  	<div class="panel-footer">
-		  <!-- We'll need to find a way to have the star repeated. Possibly with Handlebars or JS? -->
-		  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Crystal_keditbookmarks.png" alt="star rating" class="pull-left">
-		  <button class="pull-right">To Be Watched</button>
-		  <a href="#" id="delete#{{key}}" class= "pleaseDelete" imdbid="{{@key}}">Delete</a>
-		  {{!-- having trouble with the button so am commenting out to try something different --}}
-		  {{!-- <button class="pull-right" id="removeButton">Remove Movie</button> --}}
-
-		</div>
+  </div>
+  <div class="panel-footer">
+    <input id="starInput#{{@key}}" imdbid={{@key}} type="number" class="starRating" data-stars=10 value={{rating}}>
+    {{#if watched}}
+      <button class="pull-right watchedButton btn btn-success" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Watched</button>
+    {{else}}
+      <button class="pull-right watchedButton btn btn-default" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Not Watched</button>
+    {{/if}}
+	</div>
 </div>
-
-
 {{/each}}
