@@ -20,21 +20,9 @@ requirejs(
   ["jquery", "hbs", "bootstrap", "bootstrap-star-rating", "lodash", "q", "firebase", "dataControl", "loginRegister", "domControl"],
   function($, Handlebars, bootstrap, bootstrapStarRating, _, q, Firebase, dataControl, loginRegister, domControl) {
 
-  // Handlebars.registerHelper('if_eq', function(a, b, options) {
-  //   if (a == b) {
-  //     console.log(options.fn(this));
-  //     return options.fn(this);
-  //   } else {
-  //     console.log(options.inverse(this));
-  //     return options.inverse(this);
-  //   }
-  // });
-
   var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
-  loginRegister.getLogin("mncross@gmail.com", "abc");
-
-  dataControl.getUsersMovies(firebaseRef.getAuth().uid);
+  // loginRegister.getLogin("mncross@gmail.com", "abc");
 
   $('#searchOMDbButton').click(function(){
     dataControl.OMDbSearch($('#searchText').val())
@@ -85,8 +73,9 @@ requirejs(
     });
   });
 
-  $("#submit").click(function(){
-    // console.log("YES");
+  $("#loginButton").click(function(){
+    // console.log("loginButton clicked");
+    loginRegister.getLogin();
   });
 
   $('#registerButton').click(function(){
