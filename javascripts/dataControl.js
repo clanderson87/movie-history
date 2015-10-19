@@ -68,16 +68,16 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 		},
 		markWatched: function(imdbID, thisButton) {
 			// console.log("markWatched run");
-			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: true});
 			$(thisButton).attr("watched", "true");
+			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: true});
 			$(thisButton).removeClass("btn-default");
 			$(thisButton).addClass("btn-success");
 			$(thisButton).text("Watched");
 		},
 		markUnwatched: function(imdbID, thisButton) {
 			// console.log("markUnwatched run");
-			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: false});
 			$(thisButton).attr("watched", "false");
+			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: false});
 			$(thisButton).removeClass("btn-success");
 			$(thisButton).addClass("btn-default");
 			$(thisButton).text("Not Watched");

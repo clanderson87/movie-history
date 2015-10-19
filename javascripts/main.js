@@ -104,15 +104,15 @@ requirejs(
     if (thisMovieWatched == "false") {
       dataControl.markWatched(thisMovie, thisButton);
     } else {
-      dataControl.markUnwatched(thisMovie);
+      dataControl.markUnwatched(thisMovie, thisButton);
     }
   });
 
   $(document).on('rating.change', '.starRating', function(event, value, caption) {
     var thisButton = $(this);
     var thisMovie = $(this).attr("imdbid");
-    console.log("starRating changed");
-    console.log(value);
+    // console.log("starRating changed");
+    // console.log(value);
     dataControl.changeRating(thisMovie, thisButton, value);
   });
 });
