@@ -63,7 +63,34 @@ define(["jquery", "q", "firebase"], function($, q, firebase) {
 				console.log("getUsersMovies was a fail");
 			});
 			return deferred.promise;
+		},
+
+
+		deleteUsersMovies: function(imdbid) {
+			console.log(imdbid);
+			console.log("Testing delete button");
+
 		}
+
+
+
+
+// $(document).on("click", "a[id^='delete#']", function() {
+
+//       console.log(this.id, "https://nss-movie-history.firebaseio.com/movies/" + this.id.split("#")[1] + ".json");
+
+//       $.ajax({
+//         url: "https://nss-movie-history.firebaseio.com/movies/" + this.id.split("#")[1] + ".json",
+//         method: "DELETE",
+//         contentType: "application/json"
+//       }).done(function(movie){
+//         console.log("Successfully deleted movie");
+//       });
+//     })
+
+
+
+
 	};
 });
 

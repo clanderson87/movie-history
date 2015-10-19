@@ -20,6 +20,7 @@ requirejs(
 
   var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
+
   loginRegister.getLogin("mncross@gmail.com", "abc");
 
   dataControl.getUsersMovies(firebaseRef.getAuth().uid);
@@ -76,4 +77,12 @@ requirejs(
     console.log("registerButton clicked");
     loginRegister.getRegister();
   });
+
+  $(document).on("click", "a[id^='delete#']", function() {
+    var imdbid = $(this).attr("imdbid");
+    console.log("imdbid", imdbid);
+    dataControl.deleteUsersMovies(imdbid);
+  });
+
+
 });
