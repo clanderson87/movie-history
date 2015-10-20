@@ -57,7 +57,15 @@ requirejs(
   });
 
   $(document).on('click', '#searchMyMoviesButton', function() {
-    filtering.searchMyMovies();
+    dataControl.OMDbSearch($('#searchText').val())
+    .then(function(OMDbSearchResults) {
+      console.log("OMDbSearchResults", OMDbSearchResults);
+      dataControl.getUsersMovies().then(function(firebaseMovies) {
+        console.log("firebaseMovies", firebaseMovies);
+      });
+    });
+
+    // filtering.searchMyMovies();
   });
 
   $(document).on('click', '.addMovieButton', function() {
@@ -91,7 +99,7 @@ requirejs(
   $(document).on("click", ".deleteButton", function() {
     var imdbid = $(this).attr("imdbid");
     console.log("imdbid", imdbid);
-    // dataControl.deleteUsersMovies(imdbid);
+    dataControl.deleteUsersMovies(imdbid);
     dataControl.getUsersMovies()
     .then(function(movies) {
       domControl.loadProfileHbs(movies);

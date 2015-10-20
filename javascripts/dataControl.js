@@ -35,21 +35,23 @@ define(["jquery", "q", "firebase"],
 			var newMovie;
 			if (movieObject.Poster == "N/A") {
 				newMovie = {
-					title: movieObject.Title,
-					year: movieObject.Year,
-					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					Title: movieObject.Title,
+					Year: movieObject.Year,
+					Actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
 					watched: false,
-					poster: "../images/defaultPoster.jpg",
-					rating: 0
+					Poster: "../images/defaultPoster.jpg",
+					rating: 0,
+					imdbID: movieObject.imdbID
 				};
 			} else {
 				newMovie = {
-					title: movieObject.Title,
-					year: movieObject.Year,
-					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					Title: movieObject.Title,
+					Year: movieObject.Year,
+					Actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
 					watched: false,
-					poster: "http://img.omdbapi.com/?i=" + movieObject.imdbID + "&apikey=8513e0a1",
-					rating: 0
+					Poster: "http://img.omdbapi.com/?i=" + movieObject.imdbID + "&apikey=8513e0a1",
+					rating: 0,
+					imdbID: movieObject.imdbID
 				};
 			}
 			// console.log("newMovie to be added", newMovie);

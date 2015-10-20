@@ -6,7 +6,7 @@ define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 					$("#myMovies").html(mainTpl({movies: movies}));
 					$(".starRating").rating({
 						min:0,
-						max:10,
+						max:5,
 						step:1,
 						size:'xs',
 						showClear:true,
@@ -16,11 +16,6 @@ define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 							3: 'Three Stars',
 							4: 'Four Stars',
 							5: 'Five Stars',
-							6: 'Six Stars',
-							7: 'Seven Stars',
-							8: 'Eight Stars',
-							9: 'Nine Stars',
-							10: 'Ten Stars'
 						},
 						starCaptionClasses: function(val) {
 							if (val === 0) {
