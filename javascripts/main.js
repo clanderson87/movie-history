@@ -71,7 +71,7 @@ requirejs(
       // console.log("currentUser", currentUser);
       dataControl.addUserMovie(currentUser, OMDbExactMatch);
     }).then(function(){
-      dataControl.getUsersMovies(firebaseRef.getAuth().uid)
+      dataControl.getUsersMovies()
       .then(function(moviesReturnedByPromise){
         domControl.loadProfileHbs(moviesReturnedByPromise);
       });
@@ -91,7 +91,11 @@ requirejs(
   $(document).on("click", ".deleteButton", function() {
     var imdbid = $(this).attr("imdbid");
     console.log("imdbid", imdbid);
-    dataControl.deleteUsersMovies(imdbid);
+    // dataControl.deleteUsersMovies(imdbid);
+    dataControl.getUsersMovies()
+    .then(function(movies) {
+      domControl.loadProfileHbs(movies);
+    });
   });
 
 

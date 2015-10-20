@@ -55,8 +55,9 @@ define(["jquery", "q", "firebase"],
 			// console.log("newMovie to be added", newMovie);
 			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
-		getUsersMovies: function(uid) {
+		getUsersMovies: function() {
 			var deferred = q.defer();
+			var uid = firebaseRef.getAuth().uid;
 			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
 			.done(function(userMovies) {
 				// console.log("userMovies", userMovies);
@@ -69,7 +70,13 @@ define(["jquery", "q", "firebase"],
 		},
 		deleteUsersMovies: function(imdbid) {
 			console.log(imdbid);
-			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbid).remove();
+			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbid).remove(function(error) {
+				if (error) {
+					console.log("there was an error", error);
+				} else {
+					console.log("it worked!");
+				}
+			});
 			console.log("Testing delete button");
 		},
 
@@ -92,8 +99,6 @@ define(["jquery", "q", "firebase"],
 		changeRating: function(imdbID, thisButton, ratingValue) {
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({rating: ratingValue});
 		}
-
-
 
 	};
 });
