@@ -62,6 +62,8 @@ requirejs(
       console.log("OMDbSearchResults", OMDbSearchResults);
       dataControl.getUsersMovies().then(function(firebaseMovies) {
         console.log("firebaseMovies", firebaseMovies);
+        var firebaseMoviesArray = _.values(firebaseMovies);
+        console.log("firebaseMoviesArray", firebaseMoviesArray);
       });
     });
 
