@@ -7,13 +7,20 @@ define(["jquery", "q", "firebase"],
 		OMDbSearch: function(searchString) {
 			var deferred = q.defer();
 			searchString = searchString.split(' ').join('+');
-			// console.log("movie searched", searchString);
 			$.ajax("http://www.omdbapi.com/?s=" + searchString + "&type=movie&r=json")
 			.done(function(potentialMatches) {
-				deferred.resolve(potentialMatches.Search);
-				// console.log("OMDb search data", potentialMatches);
+				var searchResultsArray = potentialMatches.Search;
+				var mappedSearchResultsArray = searchResultsArray.map(function(currValue, index, array) {
+					if(currValue.Poster === "N/A") {
+						currValue.Poster = "../images/defaultPoster.jpg";
+					} else {
+						currValue.Poster = "http://img.omdbapi.com/?i=" + currValue.imdbID + "&apikey=8513e0a1";
+					}
+					return currValue;
+				});
+				deferred.resolve(mappedSearchResultsArray);
 			}).fail(function() {
-				// console.log("OMDb search failed");
+				console.log("OMDb search failed");
 			});
 			return deferred.promise;
 		},
@@ -22,16 +29,13 @@ define(["jquery", "q", "firebase"],
 			$.ajax("http://www.omdbapi.com/?i=" + imdbID + "&r=json")
 			.done(function(exactMatch) {
 				deferred.resolve(exactMatch);
-				// console.log("OMDb exact match", exactMatch);
 			})
 			.fail(function() {
-				// console.log("OMDb exact match failed");
+				console.log("OMDb exact match failed");
 			});
 			return deferred.promise;
 		},
 		addUserMovie: function(uid, movieObject) {
-			// console.log("uid", uid);
-			// console.log("movieObject", movieObject);
 			var newMovie;
 			if (movieObject.Poster == "N/A") {
 				newMovie = {
@@ -41,7 +45,8 @@ define(["jquery", "q", "firebase"],
 					watched: false,
 					Poster: "../images/defaultPoster.jpg",
 					rating: 0,
-					imdbID: movieObject.imdbID
+					imdbID: movieObject.imdbID,
+					savedToFirebase: true
 				};
 			} else {
 				newMovie = {
@@ -51,10 +56,10 @@ define(["jquery", "q", "firebase"],
 					watched: false,
 					Poster: "http://img.omdbapi.com/?i=" + movieObject.imdbID + "&apikey=8513e0a1",
 					rating: 0,
-					imdbID: movieObject.imdbID
+					imdbID: movieObject.imdbID,
+					savedToFirebase: true
 				};
 			}
-			// console.log("newMovie to be added", newMovie);
 			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
 		getUsersMovies: function() {
@@ -62,27 +67,21 @@ define(["jquery", "q", "firebase"],
 			var uid = firebaseRef.getAuth().uid;
 			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
 			.done(function(userMovies) {
-				// console.log("userMovies", userMovies);
 				deferred.resolve(userMovies);
 			})
 			.fail(function() {
-				// console.log("getUsersMovies was a fail");
+				console.log("getUsersMovies was a fail");
 			});
 			return deferred.promise;
 		},
 		deleteUsersMovies: function(imdbid) {
-			console.log(imdbid);
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbid).remove(function(error) {
 				if (error) {
 					console.log("there was an error", error);
-				} else {
-					console.log("it worked!");
 				}
 			});
-			console.log("Testing delete button");
 		},
 		markWatched: function(imdbID, thisButton) {
-			// console.log("markWatched run");
 			$(thisButton).attr("watched", "true");
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: true});
 			$(thisButton).removeClass("btn-default");
@@ -90,7 +89,6 @@ define(["jquery", "q", "firebase"],
 			$(thisButton).text("Watched");
 		},
 		markUnwatched: function(imdbID, thisButton) {
-			// console.log("markUnwatched run");
 			$(thisButton).attr("watched", "false");
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: false});
 			$(thisButton).removeClass("btn-success");
