@@ -137,14 +137,16 @@ requirejs(
 
 // filter for movies watched
   $(document).on("click", "#filterWatched", function(){
-      var watchedMovies = $(this).attr("watched");
-     dataControl.getUsersMovies()
+    var watchedMovies = $(this).attr("watched");
+    console.log("watchedMovies", watchedMovies);
+    dataControl.getUsersMovies()
      .then(function(watchedMovies) {
         dataControl.startFilter(watchedMovies);
-     });
+    });
 
     console.log("watched filter has been clicked");
   });
+
 
     // if (movieObject.watched == true) {
     //     watchedMovies = {}

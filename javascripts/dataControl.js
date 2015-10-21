@@ -103,12 +103,10 @@ define(["jquery", "q", "firebase"],
 		},
 
 		startFilter: function(watchedMovies, thisButton) {
-			$(thisButton).attr("watched", "true");
+			// var uid = firebaseRef.getAuth().uid;
+			// $(thisButton).attr("watched", "true");
 			
-			// dataControl.getUsersMovies()
-			// .then(function(watchedMovies){
 				console.log("we have movement");
-
 
 			// });
 			return 
