@@ -3,15 +3,14 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 	var firebaseRef = new firebase("https://nss-movie-history.firebaseio.com");
 
 	return {
-		getLogin: function(email, password) {
+		getLogin: function(emailArg, passwordArg) {
 			firebaseRef.authWithPassword({
-					email 	 : email/*$('#email').val()*/,
-					password : password/*$('#pwd').val()*/
+					email 	 : $('#email').val()/*emailArg*/,
+					password : $('#pwd').val()/*passwordArg*/
 			}, function(error, authData) {
 				if (error) {
 					console.log("Login Failed!", error);
 				} else {
-					// console.log("Authenticated successfully with payload:", authData);
 					dataControl.getUsersMovies()
 					.then(function(moviesReturnedByPromise){
 							$('#loginRegister').remove();
@@ -21,7 +20,6 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 			});
 		},
 		getRegister: function(){
-			// console.log("getRegister run");
 			var newUserEmail = $('#email').val();
 			firebaseRef.createUser({
 					email    : newUserEmail,
@@ -30,7 +28,6 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 					if (error) {
 						console.log("Error creating user:", error);
 					} else {
-						console.log("Successfully created user account with uid:", userData.uid);
 						var newUser ={
 							userEmail: newUserEmail
 						};

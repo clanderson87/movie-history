@@ -44,16 +44,20 @@
 	  <p>{{Title}} {{Year}}</p>
   </div>
   <div class="posterImage">
-    <button id="delete#{{key}}" imdbid="{{@key}}" type="button" class="close deleteButton">&times;</button>
+    <button id="delete#{{imdbID}}" imdbid="{{imdbID}}" type="button" class="close deleteButton">&times;</button>
     <img src={{Poster}} alt="{{Title}} poster" class="img-responsive center-block">
   </div>
   <div class="panel-footer">
-    <input id="starInput#{{@key}}" imdbid={{@key}} type="number" class="starRating" data-stars=5 value={{rating}}>
-    {{#if watched}}
-      <button class="pull-right watchedButton btn btn-success" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Watched</button>
+    <input id="starInput#{{imdbID}}" imdbid={{imdbID}} type="number" class="starRating" data-stars=5 value={{rating}}>
+    {{#if savedToFirebase}}
+      <button class="pull-left addRemoveMovieButton btn btn-danger" imdbid={{imdbID}} savedToFirebase={{savedToFirebase}}>Remove Movie</button>
     {{else}}
-      <button class="pull-right watchedButton btn btn-default" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Not Watched</button>
-
+      <button class="pull-left addRemoveMovieButton btn btn-default" imdbid={{imdbID}} savedToFirebase={{savedToFirebase}}>Add Movie</button>
+    {{/if}}
+    {{#if watched}}
+      <button class="pull-right watchedButton btn btn-success" id="watchedButton#{{imdbID}}" imdbid={{imdbID}} watched={{watched}}>Watched</button>
+    {{else}}
+      <button class="pull-right watchedButton btn btn-default" id="watchedButton#{{imdbID}}" imdbid={{imdbID}} watched={{watched}}>Not Watched</button>
     {{/if}}
 	</div>
 </div>

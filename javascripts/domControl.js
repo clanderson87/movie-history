@@ -1,9 +1,9 @@
 define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 
 	return {
-		loadProfileHbs: function(movies) {
+		loadProfileHbs: function(allMoviesArray) {
 			require(['hbs!../templates/main'], function(mainTpl) {
-					$("#myMovies").html(mainTpl({movies: movies}));
+					$("#myMovies").html(mainTpl({movies: allMoviesArray}));
 					$(".starRating").rating({
 						min:0,
 						max:5,
@@ -20,13 +20,13 @@ define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 						starCaptionClasses: function(val) {
 							if (val === 0) {
 								return 'label label-default';
-							} else if (val < 3) {
+							} else if (val < 2) {
 								return 'label label-danger';
-							} else if (val < 5) {
+							} else if (val < 3) {
 								return 'label label-warning';
-							} else if (val < 7) {
+							} else if (val < 4) {
 								return 'label label-info';
-							} else if (val < 9) {
+							} else if (val < 5) {
 								return 'label label-primary';
 							} else {
 								return 'label label-success';
