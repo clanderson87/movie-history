@@ -11,8 +11,8 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 				if (error) {
 					console.log("Login Failed!", error);
 				} else {
-					console.log("Authenticated successfully with payload:", authData);
-					dataControl.getUsersMovies(authData.uid)
+					// console.log("Authenticated successfully with payload:", authData);
+					dataControl.getUsersMovies()
 					.then(function(moviesReturnedByPromise){
 							$('#loginRegister').remove();
 							domControl.loadProfileHbs(moviesReturnedByPromise);

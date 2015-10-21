@@ -7,7 +7,7 @@ define(["jquery", "lodash", "dataControl", "firebase", "domControl"],
 		searchMyMovies: function() {
 			console.log("searchMyMovies run");
 			console.log("search field is", $('#searchText').val());
-			dataControl.getUsersMovies(firebaseRef.getAuth().uid)
+			dataControl.getUsersMovies()
 			.then(function(userMovies) {
 				console.log("userMovies", userMovies);
 				var userMoviesArray = [];
@@ -20,6 +20,10 @@ define(["jquery", "lodash", "dataControl", "firebase", "domControl"],
 				console.log("filteredMovies", filteredMovies);
 				domControl.loadProfileHbs(filteredMovies);
 			});
-		}
+		},
+
+		
+
+
 	};
 });

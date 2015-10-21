@@ -35,28 +35,31 @@ define(["jquery", "q", "firebase"],
 			var newMovie;
 			if (movieObject.Poster == "N/A") {
 				newMovie = {
-					title: movieObject.Title,
-					year: movieObject.Year,
-					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					Title: movieObject.Title,
+					Year: movieObject.Year,
+					Actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
 					watched: false,
-					poster: "../images/defaultPoster.jpg",
-					rating: 0
+					Poster: "../images/defaultPoster.jpg",
+					rating: 0,
+					imdbID: movieObject.imdbID
 				};
 			} else {
 				newMovie = {
-					title: movieObject.Title,
-					year: movieObject.Year,
-					actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
+					Title: movieObject.Title,
+					Year: movieObject.Year,
+					Actors: movieObject.Actors.replace(/(, )/g, "|").split('|'),
 					watched: false,
-					poster: "http://img.omdbapi.com/?i=" + movieObject.imdbID + "&apikey=8513e0a1",
-					rating: 0
+					Poster: "http://img.omdbapi.com/?i=" + movieObject.imdbID + "&apikey=8513e0a1",
+					rating: 0,
+					imdbID: movieObject.imdbID
 				};
 			}
 			// console.log("newMovie to be added", newMovie);
 			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
-		getUsersMovies: function(uid) {
+		getUsersMovies: function() {
 			var deferred = q.defer();
+			var uid = firebaseRef.getAuth().uid;
 			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
 			.done(function(userMovies) {
 				// console.log("userMovies", userMovies);
@@ -69,6 +72,13 @@ define(["jquery", "q", "firebase"],
 		},
 		deleteUsersMovies: function(imdbid) {
 			console.log(imdbid);
+			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbid).remove(function(error) {
+				if (error) {
+					console.log("there was an error", error);
+				} else {
+					console.log("it worked!");
+				}
+			});
 			console.log("Testing delete button");
 		},
 		markWatched: function(imdbID, thisButton) {
@@ -89,26 +99,18 @@ define(["jquery", "q", "firebase"],
 		},
 		changeRating: function(imdbID, thisButton, ratingValue) {
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({rating: ratingValue});
+		},
+
+		startFilter: function(watchedMovies, thisButton) {
+			// var uid = firebaseRef.getAuth().uid;
+			// $(thisButton).attr("watched", "true");
+			
+				console.log("we have movement");
+
+			// });
+			return 
+			console.log ("startFilter ran");
 		}
-
-
-
-
-// $(document).on("click", "a[id^='delete#']", function() {
-
-//       console.log(this.id, "https://nss-movie-history.firebaseio.com/movies/" + this.id.split("#")[1] + ".json");
-
-//       $.ajax({
-//         url: "https://nss-movie-history.firebaseio.com/movies/" + this.id.split("#")[1] + ".json",
-//         method: "DELETE",
-//         contentType: "application/json"
-//       }).done(function(movie){
-//         console.log("Successfully deleted movie");
-//       });
-//     })
-
-
-
 
 	};
 });

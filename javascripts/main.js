@@ -56,8 +56,18 @@ requirejs(
     });
   });
 
+
   $(document).on('click', '#searchMyMoviesButton', function() {
-    filtering.searchMyMovies();
+    dataControl.OMDbSearch($('#searchText').val())
+    .then(function(OMDbSearchResults) {
+      console.log("OMDbSearchResults", OMDbSearchResults);
+      dataControl.getUsersMovies()
+      .then(function(firebaseMovies) {
+        console.log("firebaseMovies", firebaseMovies);
+      });
+    });
+
+    // filtering.searchMyMovies();
   });
 
   $(document).on('click', '.addMovieButton', function() {
@@ -71,7 +81,7 @@ requirejs(
       // console.log("currentUser", currentUser);
       dataControl.addUserMovie(currentUser, OMDbExactMatch);
     }).then(function(){
-      dataControl.getUsersMovies(firebaseRef.getAuth().uid)
+      dataControl.getUsersMovies()
       .then(function(moviesReturnedByPromise){
         domControl.loadProfileHbs(moviesReturnedByPromise);
       });
@@ -92,6 +102,10 @@ requirejs(
     var imdbid = $(this).attr("imdbid");
     console.log("imdbid", imdbid);
     dataControl.deleteUsersMovies(imdbid);
+    dataControl.getUsersMovies()
+    .then(function(movies) {
+      domControl.loadProfileHbs(movies);
+    });
   });
 
 
@@ -116,4 +130,44 @@ requirejs(
     // console.log(value);
     dataControl.changeRating(thisMovie, thisButton, value);
   });
+
+
+
+// =======================
+
+// filter for movies watched
+  $(document).on("click", "#filterWatched", function(){
+    var watchedMovies = $(this).attr("watched");
+    console.log("watchedMovies", watchedMovies);
+    dataControl.getUsersMovies()
+     .then(function(watchedMovies) {
+        dataControl.startFilter(watchedMovies);
+    });
+
+    console.log("watched filter has been clicked");
+  });
+
+
+    // if (movieObject.watched == true) {
+    //     watchedMovies = {}
+
+
+
+// filter for movies NOT watched
+
+   $(document).on("click", "#filterToWatch", function(){
+    console.log("Not watched filter has been clicked");
+    console.log("test");
+  });
+
+
+// filter for 5 star movies 
+
+    $(document).on("click", "#filterRated5", function(){
+      console.log("five star filter has been clicked");
+    });
+
+
+    // ======================
+
 });
