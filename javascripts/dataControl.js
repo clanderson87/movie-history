@@ -70,6 +70,7 @@ define(["jquery", "q", "firebase"],
 		deleteUsersMovies: function(imdbid) {
 			console.log(imdbid);
 			console.log("Testing delete button");
+		},
 		markWatched: function(imdbID, thisButton) {
 			// console.log("markWatched run");
 			$(thisButton).attr("watched", "true");

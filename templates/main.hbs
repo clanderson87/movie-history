@@ -38,16 +38,16 @@
 </div>
 
 {{#each movies}}
-<div class="panel panel-default col-md-4">
+<div class="panel panel-default col-md-3">
 	<div class="panel-heading">
-	  <p>{{title}} {{year}}</p>
+	  <p>{{Title}} {{Year}}</p>
   </div>
   <div class="posterImage">
     <button id="delete#{{key}}" imdbid="{{@key}}" type="button" class="close deleteButton">&times;</button>
-    <img src={{poster}} alt="{{title}} poster" class="img-responsive center-block">
+    <img src={{Poster}} alt="{{Title}} poster" class="img-responsive center-block">
   </div>
   <div class="panel-footer">
-    <input id="starInput#{{@key}}" imdbid={{@key}} type="number" class="starRating" data-stars=10 value={{rating}}>
+    <input id="starInput#{{@key}}" imdbid={{@key}} type="number" class="starRating" data-stars=5 value={{rating}}>
     {{#if watched}}
       <button class="pull-right watchedButton btn btn-success" id="watchedButton#{{@key}}" imdbid={{@key}} watched={{watched}}>Watched</button>
     {{else}}

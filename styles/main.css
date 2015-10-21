@@ -1,9 +1,9 @@
 body {
   background-color: #1A141A;
-  color: blue; }
+  color: #020202; }
 
 header {
-  background-color: blue;
+  background-color: #CCCCCC;
   height: 100px; }
 
 @media screen and (min-width: 640px) {
@@ -17,9 +17,21 @@ button {
 marquee {
   color: blue; }
 
+.center-block {
+  max-height: 300px;
+  max-width: 200px;
+  padding: auto; }
+
+.panel-footer {
+  height: 100px;
+  width: 75px;
+  background-color: #CCCCCC;
+  align-content: center; }
+
 .panel {
   border: solid black;
-  height: 600px; }
+  height: 700px;
+  background-color: #CCCCCC; }
 
 .modal-content {
   border: 1px solid #0066FF; }
@@ -31,8 +43,23 @@ marquee {
   border: 1px solid black;
   padding: 5px; }
 
-.panel-heading p {
-  border: solid #999966; }
+div.panel-heading p {
+  color: black; }
+
+div.panel-heading {
+  background-image: yellow;
+  color: black;
+  background: yellow; }
+
+.panel-heading {
+  border: solid #000;
+  max-height: 100px;
+  min-height: 100px;
+  background: yellow;
+  align-content: center;
+  background-color: black;
+  color: yellow;
+  background-image: green; }
 
 div img {
   margin: 10px;
