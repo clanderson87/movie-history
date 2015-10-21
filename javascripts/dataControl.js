@@ -35,7 +35,7 @@ define(["jquery", "q", "firebase"],
 			});
 			return deferred.promise;
 		},
-		addUserMovie: function(uid, movieObject) {
+		addUserMovie: function(movieObject) {
 			var newMovie;
 			if (movieObject.Poster == "N/A") {
 				newMovie = {
@@ -60,14 +60,24 @@ define(["jquery", "q", "firebase"],
 					savedToFirebase: true
 				};
 			}
-			firebaseRef.child('users').child(uid).child('movies').child(movieObject.imdbID).set(newMovie);
+			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
 		getUsersMovies: function() {
 			var deferred = q.defer();
 			var uid = firebaseRef.getAuth().uid;
 			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
 			.done(function(userMovies) {
-				deferred.resolve(userMovies);
+				var firebaseMoviesArray = _.values(userMovies).sort(function(a, b) {
+          if (a.Title[0] < b.Title[0]) {
+            return -1;
+          }
+          if (a.Title[0] > b.Title[0]) {
+            return 1;
+          }
+          return 0;
+        });
+        console.log(firebaseMoviesArray);
+				deferred.resolve(firebaseMoviesArray);
 			})
 			.fail(function() {
 				console.log("getUsersMovies was a fail");
@@ -82,14 +92,14 @@ define(["jquery", "q", "firebase"],
 			});
 		},
 		markWatched: function(imdbID, thisButton) {
-			$(thisButton).attr("watched", "true");
+			$(thisButton).attr("watched", true);
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: true});
 			$(thisButton).removeClass("btn-default");
 			$(thisButton).addClass("btn-success");
 			$(thisButton).text("Watched");
 		},
 		markUnwatched: function(imdbID, thisButton) {
-			$(thisButton).attr("watched", "false");
+			$(thisButton).attr("watched", false);
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: false});
 			$(thisButton).removeClass("btn-success");
 			$(thisButton).addClass("btn-default");

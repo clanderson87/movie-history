@@ -49,9 +49,9 @@
   <div class="panel-footer">
     <input id="starInput#{{imdbID}}" imdbid={{imdbID}} type="number" class="starRating" data-stars=5 value={{rating}}>
     {{#if savedToFirebase}}
-      <button class="pull-left addRemoveMovieButton btn btn-danger" imdb={{imdbID}} savedToFirebase={{savedToFirebase}}>Remove Movie</button>
+      <button class="pull-left addRemoveMovieButton btn btn-danger" imdbid={{imdbID}} savedToFirebase={{savedToFirebase}}>Remove Movie</button>
     {{else}}
-      <button class="pull-left addRemoveMovieButton btn btn-default" imdb={{imdbID}} savedToFirebase={{savedToFirebase}}>Add Movie</button>
+      <button class="pull-left addRemoveMovieButton btn btn-default" imdbid={{imdbID}} savedToFirebase={{savedToFirebase}}>Add Movie</button>
     {{/if}}
     {{#if watched}}
       <button class="pull-right watchedButton btn btn-success" id="watchedButton#{{imdbID}}" imdbid={{imdbID}} watched={{watched}}>Watched</button>
