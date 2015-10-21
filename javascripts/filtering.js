@@ -20,6 +20,12 @@ define(["jquery", "lodash", "dataControl", "firebase", "domControl"],
 				console.log("filteredMovies", filteredMovies);
 				domControl.loadProfileHbs(filteredMovies);
 			});
+		},
+
+		startFilter: function() {
+			console.log ("startFilter ran");
 		}
+
+
 	};
 });

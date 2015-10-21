@@ -56,6 +56,7 @@ requirejs(
     });
   });
 
+
   $(document).on('click', '#searchMyMoviesButton', function() {
     dataControl.OMDbSearch($('#searchText').val())
     .then(function(OMDbSearchResults) {
@@ -128,4 +129,24 @@ requirejs(
     // console.log(value);
     dataControl.changeRating(thisMovie, thisButton, value);
   });
+
+// filter for movies watched
+  $(document).on("click", "#filterWatched", function(){
+    console.log("watched filter has been clicked");
+  });
+
+
+// filter for movies NOT watched
+
+   $(document).on("click", "#filterToWatch", function(){
+    console.log("Not watched filter has been clicked");
+  });
+
+
+// filter for 5 star movies 
+
+    $(document).on("click", "#filterRated5", function(){
+    console.log("five star filter has been clicked");
+  });
+
 });
