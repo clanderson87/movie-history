@@ -22,9 +22,7 @@ define(["jquery", "lodash", "dataControl", "firebase", "domControl"],
 			});
 		},
 
-		startFilter: function() {
-			console.log ("startFilter ran");
-		}
+		
 
 
 	};

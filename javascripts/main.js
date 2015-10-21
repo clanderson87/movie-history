@@ -61,7 +61,8 @@ requirejs(
     dataControl.OMDbSearch($('#searchText').val())
     .then(function(OMDbSearchResults) {
       console.log("OMDbSearchResults", OMDbSearchResults);
-      dataControl.getUsersMovies().then(function(firebaseMovies) {
+      dataControl.getUsersMovies()
+      .then(function(firebaseMovies) {
         console.log("firebaseMovies", firebaseMovies);
       });
     });
@@ -130,23 +131,41 @@ requirejs(
     dataControl.changeRating(thisMovie, thisButton, value);
   });
 
+
+
+// =======================
+
 // filter for movies watched
   $(document).on("click", "#filterWatched", function(){
+      var watchedMovies = $(this).attr("watched");
+     dataControl.getUsersMovies()
+     .then(function(watchedMovies) {
+        dataControl.startFilter(watchedMovies);
+     });
+
     console.log("watched filter has been clicked");
   });
+
+    // if (movieObject.watched == true) {
+    //     watchedMovies = {}
+
 
 
 // filter for movies NOT watched
 
    $(document).on("click", "#filterToWatch", function(){
     console.log("Not watched filter has been clicked");
+    console.log("test");
   });
 
 
 // filter for 5 star movies 
 
     $(document).on("click", "#filterRated5", function(){
-    console.log("five star filter has been clicked");
-  });
+      console.log("five star filter has been clicked");
+    });
+
+
+    // ======================
 
 });

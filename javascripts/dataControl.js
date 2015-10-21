@@ -100,6 +100,19 @@ define(["jquery", "q", "firebase"],
 		},
 		changeRating: function(imdbID, thisButton, ratingValue) {
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({rating: ratingValue});
+		},
+
+		startFilter: function(watchedMovies, thisButton) {
+			$(thisButton).attr("watched", "true");
+			
+			// dataControl.getUsersMovies()
+			// .then(function(watchedMovies){
+				console.log("we have movement");
+
+
+			// });
+			return 
+			console.log ("startFilter ran");
 		}
 
 	};
