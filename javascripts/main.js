@@ -22,7 +22,7 @@ requirejs(
 
   var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
-  loginRegister.getLogin("mncross@gmail.com", "abc");
+  // loginRegister.getLogin("mncross@gmail.com", "abc");
 
   $("#loginButton").click(function(){
     loginRegister.getLogin();
