@@ -151,7 +151,7 @@ requirejs(
 
 // filter for movies NOT watched
 
-   $(document).on("click", "#filterToWatch", function(){
+  $(document).on("click", "#filterToWatch", function(){
     console.log("Not watched filter has been clicked");
     console.log("test");
   });
@@ -159,8 +159,8 @@ requirejs(
 
 // filter for 5 star movies
 
-    $(document).on("click", "#filterRated5", function(){
-      console.log("five star filter has been clicked");
-    });
+  $(document).on("click", "#filterRated5", function(){
+    console.log("five star filter has been clicked");
+  });
 
 });
