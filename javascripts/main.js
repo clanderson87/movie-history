@@ -22,7 +22,7 @@ requirejs(
 
   var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
-  // loginRegister.getLogin("mncross@gmail.com", "abc");
+  loginRegister.getLogin("jonathanhuffaker@gmail.com", "lucky7");
 
   $("#loginButton").click(function(){
     loginRegister.getLogin();
@@ -134,33 +134,55 @@ requirejs(
 
 // filter for movies watched
   $(document).on("click", "#filterWatched", function(){
-    var watchedMovies = $(this).attr("watched");
-    console.log("watchedMovies", watchedMovies);
     dataControl.getUsersMovies()
-     .then(function(watchedMovies) {
-        dataControl.startFilter(watchedMovies);
+     .then(function(allMovies) {
+        var filterWatchedMovies = dataControl.setFilterWatched(allMovies);
+        domControl.loadProfileHbs(filterWatchedMovies);
     });
     console.log("watched filter has been clicked");
   });
 
 
-    // if (movieObject.watched == true) {
-    //     watchedMovies = {}
-
-
-
 // filter for movies NOT watched
 
-  $(document).on("click", "#filterToWatch", function(){
-    console.log("Not watched filter has been clicked");
-    console.log("test");
+   $(document).on("click", "#filterToWatch", function(){
+    dataControl.getUsersMovies()
+      .then(function(allMovies) {
+        domControl.loadProfileHbs(dataControl.setFilterNotWatched(allMovies));
+      });
   });
 
 
 // filter for 5 star movies
 
-  $(document).on("click", "#filterRated5", function(){
-    console.log("five star filter has been clicked");
-  });
+    $(document).on("click", "#filterRated5", function(){
+      dataControl.getUsersMovies()
+        .then(function(allMovies){
+          domControl.loadProfileHbs(dataControl.setFilter5stars(allMovies));
+        });
+    });
+
+
+    // filter back to all
+
+    $(document).on("click", "#filterAll", function (){
+      dataControl.getUsersMovies()
+      .then(function(allMovies){
+        domControl.loadProfileHbs(allMovies);
+      });
+    });
+>>>>>>> master
 
 });
+
+
+
+
+
+
+
+
+
+
+
+

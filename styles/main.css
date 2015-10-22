@@ -1,6 +1,17 @@
+.well {
+  margin-left: 400px;
+  background-image: url("http://freedesignfile.com/upload/2014/07/Movie-time-design-elements-vector-backgrounds-03.jpg");
+  align: center;
+  background-color: #999966;
+  width: 400px;
+  text-align: center;
+  margin-top: 0px; }
+
 body {
-  background-color: #1A141A;
-  color: #020202; }
+  background-image: url("http://www.foodincmovie.co.uk/img/site/background_home-03.jpg");
+  color: #020202;
+  align: center;
+  background-repeat: no-repeat; }
 
 header {
   background-color: #CCCCCC;

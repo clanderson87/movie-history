@@ -107,19 +107,43 @@ define(["jquery", "q", "firebase"],
 		},
 		changeRating: function(imdbID, thisButton, ratingValue) {
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({rating: ratingValue});
+
 		},
 
-		startFilter: function(watchedMovies, thisButton) {
-			// var uid = firebaseRef.getAuth().uid;
-			// $(thisButton).attr("watched", "true");
-			
-				console.log("we have movement");
+		setFilterWatched: function(allMovies) {
+			var filteredWatchedMovies = allMovies.filter(function(movie){
+				console.log(movie.watched);
+				if ( movie.watched == true) {
+					return movie;	
+				// console.log("success of filter");
+				}	
+			}); 
+			console.log("filteredWatchedMovies", filteredWatchedMovies);
+			return filteredWatchedMovies;
+		},
 
-			// });
-			return 
-			console.log ("startFilter ran");
+		setFilterNotWatched:  function(allMovies) {
+			var filteredNotWatchedMovies = allMovies.filter(function(movie){
+				console.log(movie.notWatched);
+				if ( movie.watched == false ) {
+					return movie;
+				}
+			});
+			console.log("filteredNotWatchedMovies", filteredNotWatchedMovies);
+			return filteredNotWatchedMovies;
+		},
+
+		setFilter5stars:  function(allMovies) {
+			var filtered5stars = allMovies.filter(function(movie){
+				console.log(movie.rating);
+				if (movie.rating == "5") {
+					return movie;
+				}
+			});
+			console.log("filtered5stars", filtered5stars);
+			return filtered5stars;
 		}
-
+>>>>>>> 7799ae037744e9399165474dbeaa7474e75cf41f
 	};
 });
 

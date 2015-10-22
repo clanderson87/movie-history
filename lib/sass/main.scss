@@ -1,7 +1,26 @@
-body {
-  background-color: #1A141A;
-  color: #020202;
+$himage: "http://editor.circlepad.com/cpGraphics/templatePhotos/1024_691_DinoLightBackground.jpg";
+$bimage: "http://www.jennettefulda.com/wp-content/uploads/2014/08/movie-theater-500.jpg";
+$simage: "http://www.foodincmovie.co.uk/img/site/background_home-03.jpg";
+$limage: "http://freedesignfile.com/upload/2014/07/Movie-time-design-elements-vector-backgrounds-03.jpg";
+.row {
 
+}
+.well{
+  margin-left: 400px;
+  background-image: url($limage);
+  align:center;
+  background-color: #999966;
+  width: 400px;
+  text-align: center;
+  margin-top: 0px;
+
+}
+body {
+  background-image: url($simage);
+  color: #020202;
+  align: center;
+  background-repeat: no-repeat;
+  
 }
 header {
   background-color: #CCCCCC;
