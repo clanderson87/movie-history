@@ -114,10 +114,10 @@ define(["jquery", "q", "firebase"],
 			var filteredWatchedMovies = allMovies.filter(function(movie){
 				console.log(movie.watched);
 				if ( movie.watched == true) {
-					return movie;	
+					return movie;
 				// console.log("success of filter");
-				}	
-			}); 
+				}
+			});
 			console.log("filteredWatchedMovies", filteredWatchedMovies);
 			return filteredWatchedMovies;
 		},
@@ -143,7 +143,6 @@ define(["jquery", "q", "firebase"],
 			console.log("filtered5stars", filtered5stars);
 			return filtered5stars;
 		}
->>>>>>> 7799ae037744e9399165474dbeaa7474e75cf41f
 	};
 });
 

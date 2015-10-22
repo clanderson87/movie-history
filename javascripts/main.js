@@ -22,8 +22,6 @@ requirejs(
 
   var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
 
-  loginRegister.getLogin("jonathanhuffaker@gmail.com", "lucky7");
-
   $("#loginButton").click(function(){
     loginRegister.getLogin();
   });
@@ -145,7 +143,7 @@ requirejs(
 
 // filter for movies NOT watched
 
-   $(document).on("click", "#filterToWatch", function(){
+  $(document).on("click", "#filterToWatch", function(){
     dataControl.getUsersMovies()
       .then(function(allMovies) {
         domControl.loadProfileHbs(dataControl.setFilterNotWatched(allMovies));
@@ -171,8 +169,6 @@ requirejs(
         domControl.loadProfileHbs(allMovies);
       });
     });
->>>>>>> master
-
 });
 
 
