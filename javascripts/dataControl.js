@@ -107,19 +107,9 @@ define(["jquery", "q", "firebase"],
 		},
 		changeRating: function(imdbID, thisButton, ratingValue) {
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({rating: ratingValue});
-		},
-
-		startFilter: function(watchedMovies, thisButton) {
-			// var uid = firebaseRef.getAuth().uid;
-			// $(thisButton).attr("watched", "true");
-			
-				console.log("we have movement");
-
-			// });
-			return 
-			console.log ("startFilter ran");
 		}
 
+	
 	};
 });
 
