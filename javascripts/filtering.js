@@ -1,7 +1,7 @@
 define(["jquery", "lodash", "dataControl", "firebase", "domControl"],
 	function($, _, dataControl, firebase, domControl) {
 
-	var firebaseRef = new firebase("https://nss-movie-history.firebaseio.com/");
+	var firebaseRef = new firebase("https://movie-history-redux.firebaseio.com/");
 
 	return {
 		searchMyMovies: function() {
@@ -22,7 +22,7 @@ define(["jquery", "lodash", "dataControl", "firebase", "domControl"],
 			});
 		},
 
-		
+
 
 
 	};

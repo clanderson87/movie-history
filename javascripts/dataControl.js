@@ -1,15 +1,18 @@
 define(["jquery", "q", "firebase"],
 	function($, q, firebase) {
 
-	var firebaseRef = new firebase("https://nss-movie-history.firebaseio.com/");
+	var firebaseRef = new firebase("https://movie-history-redux.firebaseio.com/");
 
 	return {
 		OMDbSearch: function(searchString) {
 			var deferred = q.defer();
 			searchString = searchString.split(' ').join('+');
+			//ajax call to return movie results
 			$.ajax("http://www.omdbapi.com/?s=" + searchString + "&type=movie&r=json")
 			.done(function(potentialMatches) {
 				var searchResultsArray = potentialMatches.Search;
+
+				//maps search array results and replaces old poster url with working url
 				var mappedSearchResultsArray = searchResultsArray.map(function(currValue, index, array) {
 					if(currValue.Poster === "N/A") {
 						currValue.Poster = "../images/defaultPoster.jpg";
@@ -18,6 +21,8 @@ define(["jquery", "q", "firebase"],
 					}
 					return currValue;
 				});
+
+				//returns the promise
 				deferred.resolve(mappedSearchResultsArray);
 			}).fail(function() {
 				console.log("OMDb search failed");
@@ -62,23 +67,22 @@ define(["jquery", "q", "firebase"],
 			}
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
-
-//Retrieve's Users movies with Q
-
+		//retrieves a users movies
 		getUsersMovies: function() {
 			var deferred = q.defer();
 			var uid = firebaseRef.getAuth().uid;
-			$.ajax("https://nss-movie-history.firebaseio.com/users/" + uid + "/movies/.json")
+			$.ajax("https://movie-history-redux.firebaseio.com/" + uid + "/movies/.json")
 			.done(function(userMovies) {
+				//next few lines are going through use results data and finding any 99% identical matches and returns to new array
 				var firebaseMoviesArray = _.values(userMovies).sort(function(a, b) {
-          if (a.Title[0] < b.Title[0]) {
-            return -1;
-          }
-          if (a.Title[0] > b.Title[0]) {
-            return 1;
-          }
-          return 0;
-        });
+		          if (a.Title[0] < b.Title[0]) {
+		            return -1;
+		          }
+		          if (a.Title[0] > b.Title[0]) {
+		            return 1;
+		          }
+		          return 0;
+		        });
         console.log(firebaseMoviesArray);
 				deferred.resolve(firebaseMoviesArray);
 			})
@@ -87,37 +91,20 @@ define(["jquery", "q", "firebase"],
 			});
 			return deferred.promise;
 		},
+		//finds child with specific imdbid and deletes from user accounts
+		// deleteUsersMovies: function(imdbid) {}
 
+		//Martin's Original Code to delete from firebase:
 
-
-
-
-
-
-// Movie Deletion
-
-
-
-
-
-
-
-
-		deleteUsersMovies: function(imdbid) {
-			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbid).remove(function(error) {
-				if (error) {
-					console.log("there was an error", error);
-				}
-			});
-		},
-
-
-
-
-
-
-
-
+		//{
+		// 	//only removes from firebase not from dom
+		// 	//***this code will be refactored, the new code will not delete from firebase***
+		// 	firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbid).remove(function(error) {
+		// 		if (error) {
+		// 			console.log("there was an error", error);
+		// 		}
+		// 	});
+		//},
 		markWatched: function(imdbID, thisButton) {
 			$(thisButton).attr("watched", true);
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: true});
@@ -132,9 +119,9 @@ define(["jquery", "q", "firebase"],
 			$(thisButton).addClass("btn-default");
 			$(thisButton).text("Not Watched");
 		},
+
 		changeRating: function(imdbID, thisButton, ratingValue) {
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({rating: ratingValue});
-
 		},
 
 		setFilterWatched: function(allMovies) {
@@ -149,8 +136,6 @@ define(["jquery", "q", "firebase"],
 			return filteredWatchedMovies;
 		},
 
-
-
 		setFilterNotWatched:  function(allMovies) {
 			var filteredNotWatchedMovies = allMovies.filter(function(movie){
 				console.log(movie.notWatched);
@@ -162,13 +147,12 @@ define(["jquery", "q", "firebase"],
 			return filteredNotWatchedMovies;
 		},
 
-
-//5 Star movie filter can be deleted
-
+		//this function will change to filter by any rating
+		//use passed filter value and pass to if statement
 		setFilter5stars:  function(allMovies) {
 			var filtered5stars = allMovies.filter(function(movie){
 				console.log(movie.rating);
-				if (movie.rating == "10") {
+				if (movie.rating == "5") {
 					return movie;
 				}
 			});
@@ -177,5 +161,3 @@ define(["jquery", "q", "firebase"],
 		}
 	};
 });
-
-
