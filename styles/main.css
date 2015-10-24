@@ -1,17 +1,36 @@
-.well {
-  margin-left: 400px;
-  background-image: url("http://freedesignfile.com/upload/2014/07/Movie-time-design-elements-vector-backgrounds-03.jpg");
-  align: center;
-  background-color: #999966;
-  width: 400px;
-  text-align: center;
-  margin-top: 0px; }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100% !important; }
 
 body {
-  background-image: url("http://www.foodincmovie.co.uk/img/site/background_home-03.jpg");
+  background-image: url("http://150597036.r.cdn77.net/wp-content/uploads/2014/04/high_angle_view_of_group_of_spectators_sitting_in_a_movie_theater_wearing_3-d_glasses_1574R-013028B.jpg");
   color: #020202;
-  align: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.well {
+  margin: 0 auto;
+  background-color: rgba(25, 25, 25, 0.2);
+  width: 400px;
+  font-color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none; }
+  .well input {
+    margin: 5px 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white; }
+  .well ::-webkit-input-placeholder {
+    color: white; }
+  .well .loginButtonsDiv {
+    margin: 0 auto;
+    text-align: center; }
+  .well .loginButtons {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white; }
 
 header {
   background-color: #CCCCCC;

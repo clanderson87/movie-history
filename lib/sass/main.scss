@@ -1,27 +1,50 @@
 $himage: "http://editor.circlepad.com/cpGraphics/templatePhotos/1024_691_DinoLightBackground.jpg";
 $bimage: "http://www.jennettefulda.com/wp-content/uploads/2014/08/movie-theater-500.jpg";
-$simage: "http://www.foodincmovie.co.uk/img/site/background_home-03.jpg";
+$simage: "http://150597036.r.cdn77.net/wp-content/uploads/2014/04/high_angle_view_of_group_of_spectators_sitting_in_a_movie_theater_wearing_3-d_glasses_1574R-013028B.jpg";
 $limage: "http://freedesignfile.com/upload/2014/07/Movie-time-design-elements-vector-backgrounds-03.jpg";
 .row {
 
 }
-.well{
-  margin-left: 400px;
-  background-image: url($limage);
-  align:center;
-  background-color: #999966;
-  width: 400px;
-  text-align: center;
-  margin-top: 0px;
-
+html,body{
+  margin:0;
+  padding: 0;
+  height: 100% !important;
 }
 body {
   background-image: url($simage);
   color: #020202;
-  align: center;
   background-repeat: no-repeat;
-  
+  background-size: cover;
 }
+//login modal
+.well{
+  margin: 0 auto;
+  background-color: rgba(25,25,25, 0.2);
+  width: 400px;
+  font-color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  input{
+    margin:5px 0;
+    background-color: rgba(0,0,0,.3);
+    color: white;
+  }
+  ::-webkit-input-placeholder{
+    color: white;
+  }
+  .loginButtonsDiv{
+    margin: 0 auto;
+    text-align: center;
+  }
+  .loginButtons{
+    background-color: rgba(0,0,0,.3);
+    color: white;
+  }
+}
+
 header {
   background-color: #CCCCCC;
   height: 100px;
