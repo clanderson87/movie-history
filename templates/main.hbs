@@ -35,6 +35,7 @@
 	  <li><a id="filterWatched">Watched</a></li>
 	  <li><a id="filterToWatch">To Be Watched</a></li>
 	  <li><a id= "filterRated5">5 Stars</a></li>
+      {{!-- put in a slider bar here for changing the star value, will replace above code  --}}
 	</ul>
 </div>
 
@@ -48,6 +49,7 @@
   </div>
   <div class="panel-footer">
     <input id="starInput#{{imdbID}}" imdbid={{imdbID}} type="number" class="starRating" data-stars=5 value={{rating}}>
+
     {{#if savedToFirebase}}
       <button class="pull-left addRemoveMovieButton btn btn-danger" imdbid={{imdbID}} savedToFirebase={{savedToFirebase}}>Remove Movie</button>
     {{else}}

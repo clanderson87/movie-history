@@ -11,6 +11,7 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 				if (error) {
 					console.log("Login Failed!", error);
 				} else {
+					//calls to data control to retrieve users movies
 					dataControl.getUsersMovies()
 					.then(function(moviesReturnedByPromise){
 							$('#loginRegister').remove();
@@ -21,6 +22,7 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 		},
 		getRegister: function(){
 			var newUserEmail = $('#email').val();
+			//creates user 
 			firebaseRef.createUser({
 					email    : newUserEmail,
 					password : $('#pwd').val()
@@ -31,6 +33,7 @@ define(["firebase", "dataControl", "domControl"], function(firebase, dataControl
 						var newUser ={
 							userEmail: newUserEmail
 						};
+						//creating a child with uid and setting first value with user email
 						firebaseRef.child('users').child(userData.uid).set(newUser);
 						$('#loginMessage').text(newUserEmail + " is now registered. Please login.");
 					}
