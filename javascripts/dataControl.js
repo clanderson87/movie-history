@@ -62,6 +62,9 @@ define(["jquery", "q", "firebase"],
 			}
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(movieObject.imdbID).set(newMovie);
 		},
+
+//Retrieve's Users movies with Q
+
 		getUsersMovies: function() {
 			var deferred = q.defer();
 			var uid = firebaseRef.getAuth().uid;
@@ -84,6 +87,22 @@ define(["jquery", "q", "firebase"],
 			});
 			return deferred.promise;
 		},
+
+
+
+
+
+
+
+// Movie Deletion
+
+
+
+
+
+
+
+
 		deleteUsersMovies: function(imdbid) {
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbid).remove(function(error) {
 				if (error) {
@@ -91,6 +110,14 @@ define(["jquery", "q", "firebase"],
 				}
 			});
 		},
+
+
+
+
+
+
+
+
 		markWatched: function(imdbID, thisButton) {
 			$(thisButton).attr("watched", true);
 			firebaseRef.child('users').child(firebaseRef.getAuth().uid).child('movies').child(imdbID).update({watched: true});
@@ -122,6 +149,8 @@ define(["jquery", "q", "firebase"],
 			return filteredWatchedMovies;
 		},
 
+
+
 		setFilterNotWatched:  function(allMovies) {
 			var filteredNotWatchedMovies = allMovies.filter(function(movie){
 				console.log(movie.notWatched);
@@ -133,10 +162,13 @@ define(["jquery", "q", "firebase"],
 			return filteredNotWatchedMovies;
 		},
 
+
+//5 Star movie filter can be deleted
+
 		setFilter5stars:  function(allMovies) {
 			var filtered5stars = allMovies.filter(function(movie){
 				console.log(movie.rating);
-				if (movie.rating == "5") {
+				if (movie.rating == "10") {
 					return movie;
 				}
 			});

@@ -104,6 +104,15 @@ requirejs(
   });
 
 
+
+
+
+
+
+
+
+//delete button for movies. We need to "make it inactive so that it no longer shows up in the search results."
+
   $(document).on("click", ".deleteButton", function() {
     var imdbid = $(this).attr("imdbid");
     // dataControl.deleteUsersMovies(imdbid);
@@ -112,6 +121,12 @@ requirejs(
       domControl.loadProfileHbs(movies);
     });
   });
+
+
+
+
+
+
 
 
   $(document).on('click', '.watchedButton', function() {
@@ -141,7 +156,7 @@ requirejs(
   });
 
 
-// filter for movies NOT watched
+  // filter for movies NOT watched
 
   $(document).on("click", "#filterToWatch", function(){
     dataControl.getUsersMovies()
@@ -151,7 +166,11 @@ requirejs(
   });
 
 
-// filter for 5 star movies
+
+
+
+
+    // filter for 5 star movies. Delete This
 
     $(document).on("click", "#filterRated5", function(){
       dataControl.getUsersMovies()
