@@ -33,8 +33,26 @@ body {
     color: white; }
 
 header {
-  background-color: #CCCCCC;
-  height: 100px; }
+  background-color: rgba(25, 25, 25, 0.2);
+  height: 50px; }
+  header .header {
+    background-color: black; }
+  header #searchMyMoviesButton {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white; }
+
+.filterButtonRow {
+  background-color: black; }
+
+.filterButtons {
+  color: white; }
+
+.siteTitle {
+  color: white; }
+
+#searchText {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white; }
 
 @media screen and (min-width: 640px) {
   .panel {
@@ -48,8 +66,6 @@ marquee {
   color: blue; }
 
 .center-block {
-  max-height: 300px;
-  max-width: 200px;
   padding: auto; }
 
 .panel-footer {
@@ -58,10 +74,22 @@ marquee {
   background-color: #CCCCCC;
   align-content: center; }
 
-.panel {
-  border: solid black;
-  height: 700px;
-  background-color: #CCCCCC; }
+.moviesDiv {
+  background-image: url(../images/drivein3.jpg);
+  height: 560px;
+  background-size: 100% 100%; }
+
+.moviesList {
+  height: 63%;
+  width: 90%;
+  overflow: auto;
+  margin: 0 auto;
+  position: relative;
+  top: 5%; }
+
+.poster {
+  width: 25px;
+  height: 50px; }
 
 .modal-content {
   border: 1px solid #0066FF; }

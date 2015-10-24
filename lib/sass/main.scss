@@ -2,6 +2,7 @@ $himage: "http://editor.circlepad.com/cpGraphics/templatePhotos/1024_691_DinoLig
 $bimage: "http://www.jennettefulda.com/wp-content/uploads/2014/08/movie-theater-500.jpg";
 $simage: "http://150597036.r.cdn77.net/wp-content/uploads/2014/04/high_angle_view_of_group_of_spectators_sitting_in_a_movie_theater_wearing_3-d_glasses_1574R-013028B.jpg";
 $limage: "http://freedesignfile.com/upload/2014/07/Movie-time-design-elements-vector-backgrounds-03.jpg";
+$background-color: rgba(25,25,25, 0.2);
 .row {
 
 }
@@ -19,7 +20,7 @@ body {
 //login modal
 .well{
   margin: 0 auto;
-  background-color: rgba(25,25,25, 0.2);
+  background-color: $background-color;
   width: 400px;
   font-color: white;
   position: relative;
@@ -45,9 +46,30 @@ body {
   }
 }
 
+//search bar and nav bar
 header {
-  background-color: #CCCCCC;
-  height: 100px;
+  background-color: $background-color;
+  height: 50px;
+  .header{
+    background-color: black;
+  }
+  #searchMyMoviesButton{
+    background-color: rgba(0,0,0,.3);
+    color: white;
+  }
+}
+.filterButtonRow{
+  background-color:black;
+}
+.filterButtons{
+    color: white;
+  }
+.siteTitle{
+    color: white
+  }
+#searchText{
+  background-color: rgba(0,0,0,.3);
+  color:white;
 }
 
 @media screen and (min-width: 640px) {
@@ -68,8 +90,8 @@ marquee{
 }
 
 .center-block {
-  max-height: 300px;
-  max-width: 200px;
+  // max-height: 300px;
+  // max-width: 200px;
   padding: auto;
 }
 .panel-footer {
@@ -78,10 +100,27 @@ marquee{
   background-color: #CCCCCC;
   align-content: center;
 }
+.moviesDiv{
+  background-image:url(../images/drivein3.jpg);
+  height: 560px;
+  background-size:100% 100%;
+}
+.moviesList{
+  height: 63%;
+  width:90%;
+  overflow:auto;
+  margin:0 auto;
+  position:relative;
+  top:5%;
+}
+.poster{
+  width:25px;
+  height:50px;
+}
 .panel {
-  border: solid black;
-  height: 700px;
-  background-color: #CCCCCC;
+  // border: solid black;
+  // height: 700px;
+  // background-color: transparent;
 }
 
 .modal-content {
