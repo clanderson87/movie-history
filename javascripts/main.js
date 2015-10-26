@@ -186,6 +186,13 @@ requirejs(
         domControl.loadProfileHbs(allMovies);
       });
     });
+
+    $(".moviesList").hover(function(){
+      console.log("Movie List, hovered");
+    });
+    $(".panelHeight").hover(function(){
+      console.log("movie info, hovered");
+    });
 });
 
 

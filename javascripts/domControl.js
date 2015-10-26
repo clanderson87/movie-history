@@ -3,7 +3,10 @@ define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 	return {
 		loadProfileHbs: function(allMoviesArray) {
 			require(['hbs!../templates/main'], function(mainTpl) {
-					$("#myMovies").html(mainTpl({movies: allMoviesArray}));
+					$('.headerBar').show();
+					$('.filterButtonRow').show();
+					$('#myMovies').show();
+					$(".moviesList").html(mainTpl({movies: allMoviesArray}));
 					$(".starRating").rating({
 						min:0,
 						max:5,

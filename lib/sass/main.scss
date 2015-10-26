@@ -6,6 +6,14 @@ $background-color: rgba(25,25,25, 0.2);
 .row {
 
 }
+
+#loginRegister{
+  position:fixed;
+  z-index: 900;
+}
+#myMovies{
+  display: none;
+}
 html,body{
   margin:0;
   padding: 0;
@@ -20,18 +28,18 @@ body {
 //login modal
 .well{
   margin: 0 auto;
-  background-color: $background-color;
+  background-color: rgba(255,255,255,0.8);
   width: 400px;
   font-color: white;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  color: white;
+  color: black;
   border: none;
   input{
     margin:5px 0;
     background-color: rgba(0,0,0,.3);
-    color: white;
+    color: black;
   }
   ::-webkit-input-placeholder{
     color: white;
@@ -48,6 +56,7 @@ body {
 
 //search bar and nav bar
 header {
+  display: none;
   background-color: $background-color;
   height: 50px;
   .header{
@@ -60,6 +69,7 @@ header {
 }
 .filterButtonRow{
   background-color:black;
+  display: none;
 }
 .filterButtons{
     color: white;
@@ -113,9 +123,25 @@ marquee{
   position:relative;
   top:5%;
 }
+.panelHeight{
+  height:453px;
+}
 .poster{
-  width:25px;
-  height:50px;
+  width:100%;
+  height:auto;
+}
+
+.movieInfo{
+  position:absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0, 0.6);
+  color:white;
+  z-index: 10000;
+  // width:200px;
+  width:calc(100% - 15px);
+}
+.watchButtons{
+  height:40px;
 }
 .panel {
   // border: solid black;
@@ -135,43 +161,10 @@ marquee{
   padding: 5px;
 }
 
-div.panel-heading p {
-  color: black;
-  
- 
-
-} 
-
-
-div.panel-heading {
-  background-image: yellow;
-  color: black;
-  background:yellow;
-}
- .panel-heading  {
-  border: solid #000;
-  max-height: 100px;
-  min-height: 100px;
-  background: yellow;
+.panel-heading  {
   align-content: center;
-  background-color: black;
-  color: yellow;
-  background-image: green;
-
+  color: black;
  }
-
-
-div img {
-  margin: 10px;
-    padding: 5px;
-    border:3px solid black;
-    height: auto;
-    width: auto;
-    text-align: center;
-}
-
-
-
 
 form .stars {
   background: url("stars.png") repeat-x 0 0;
