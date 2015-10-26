@@ -1,5 +1,23 @@
-#loginRegister {
+#searchOverlay {
+  display: none;
   position: fixed;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 100%;
+  width: 100%;
+  z-index: 500;
+  top: 0; }
+  #searchOverlay input {
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: 7em;
+    padding: 0; }
+  #searchOverlay input:focus {
+    border: none;
+    padding: 0; }
+
+#loginRegister {
+  position: relative;
   z-index: 900; }
 
 #myMovies {
@@ -97,7 +115,9 @@ marquee {
   top: 5%; }
 
 .panelHeight {
-  height: 453px; }
+  height: 453px;
+  overflow: hidden;
+  margin-bottom: 15px; }
 
 .poster {
   width: 100%;
@@ -105,7 +125,7 @@ marquee {
 
 .movieInfo {
   position: absolute;
-  bottom: 0;
+  top: 94%;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   z-index: 10000;

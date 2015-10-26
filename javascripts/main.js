@@ -21,13 +21,14 @@ requirejs(
   function($, _, Handlebars, bootstrap, bootstrapStarRating, q, Firebase, dataControl, loginRegister, domControl, filtering) {
 
   var firebaseRef = new Firebase("https://nss-movie-history.firebaseio.com");
-
+  var x;
   // calls to login register js
   //authorizes 
   //if successful, retrieves user data
   //then calls loadprofile handlebar and create the dom for #mymovies
   $("#loginButton").click(function(){
     loginRegister.getLogin();
+    x=1;
   });
 
   // calls to login register js
@@ -187,12 +188,23 @@ requirejs(
       });
     });
 
-    $(".moviesList").hover(function(){
-      console.log("Movie List, hovered");
+    $(document).on('mouseenter', '.movieInfo', function(){
+      $(this).animate({
+        top: "-=80px"
+      });
+    })
+    $(document).on('mouseleave', '.movieInfo', function(){
+      $(this).animate({
+        top: "+=80px"
+      });
     });
-    $(".panelHeight").hover(function(){
-      console.log("movie info, hovered");
-    });
+
+    $(document).keypress(function(){
+      if(x===1){
+        $('#searchOverlay').show();
+        $('#searchCrit').focus();
+      }  
+    })
 });
 
 
