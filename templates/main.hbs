@@ -31,10 +31,17 @@
 </header>
 <div class="row">
 	<ul class="nav nav-pills col-md-offset-1 col-md-11">
-	  <li><a id="filterAll">All</a></li>
-	  <li><a id="filterWatched">Watched</a></li>
-	  <li><a id="filterToWatch">To Be Watched</a></li>
-	  <li><a id= "filterRated5">5 Stars</a></li>
+	  <li><a id="filterAll" class="active">All</a></li>
+	  <li><a id="filterToWatch" class="active">To Be Watched</a></li>
+    <li><a id="filterWatched" class="active">Watched</a></li>
+	  <li><a id= "filterRated5" class="active">Star Rating</a></li>
+    
+    {{!-- SLIDER BAR --}}
+    <label for="range">
+    <input type="range" name="range" id="range" min="0" max="10" step="1" value="5"/>
+    
+    {{!-- DISPLAYING VALUE OF SLIDER BENEATH SLIDER --}}</label>
+    <output for="range" class="output"></output>
       {{!-- put in a slider bar here for changing the star value, will replace above code  --}}
 	</ul>
 </div>
@@ -48,7 +55,7 @@
     <img src={{Poster}} alt="{{Title}} poster" class="img-responsive center-block">
   </div>
   <div class="panel-footer">
-    <input id="starInput#{{imdbID}}" imdbid={{imdbID}} type="number" class="starRating" data-stars=5 value={{rating}}>
+    <input id="starInput#{{imdbID}}" imdbid={{imdbID}} type="number" data-min="0" data-max="10" data-step="1" class="starRating" data-stars=10 value={{rating}}>
 
     {{#if savedToFirebase}}
       <button class="pull-left addRemoveMovieButton btn btn-danger" imdbid={{imdbID}} savedToFirebase={{savedToFirebase}}>Remove Movie</button>

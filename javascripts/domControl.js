@@ -5,7 +5,8 @@ define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 			require(['hbs!../templates/main'], function(mainTpl) {
 					$("#myMovies").html(mainTpl({movies: allMoviesArray}));
 					$(".starRating").rating({
-						min:0,
+						int:10,
+
 						max:10,
 						step:1,
 						size:'xs',
@@ -52,7 +53,14 @@ define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 					});
 			});
 		}
+
+		
+
 	};
 });
+
+
+
+
 
 

@@ -165,12 +165,22 @@ define(["jquery", "q", "firebase"],
 
 //5 Star movie filter can be deleted
 
-		setFilter5stars:  function(allMovies) {
+		setFilter5stars:  function(allMovies, i) {
+
+			// 1. Add event listener to slider control for when the value changes
+			// 2. Determine what the current value is
+			// 3. Loop over collection of movies and hide all that have a greater value
+
 			var filtered5stars = allMovies.filter(function(movie){
 				console.log(movie.rating);
-				if (movie.rating == "10") {
+				if(movie.rating === i){
 					return movie;
 				}
+				// if (movie.rating == "10" && "#range" == "10") {
+				// 	return movie;
+				// } else if (movie.rating =="9" && "#range" == "9") {
+				// 	return movie;
+				// } 
 			});
 			console.log("filtered5stars", filtered5stars);
 			return filtered5stars;
