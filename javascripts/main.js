@@ -39,17 +39,21 @@ requirejs(
   });
 
   //grabs value of input search box and then calls omdb search with value passed
-  $(document).on('click', '#searchMyMoviesButton', function() {
-    dataControl.OMDbSearch($('#searchText').val())
-    .then(function(OMDbSearchResults) {
-      console.log("OMDbSearchResults", OMDbSearchResults);
-      //after resutls come back calls get user movies
-      dataControl.getUsersMovies()
-      .then(function(firebaseMovies) {
-        //this only a check to see what movies are in the firebase account
-        console.log("firebaseMovies", firebaseMovies);
-      });
-    });
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+      $('#searchOverlay').hide();
+      console.log($('#searchCrit').val());
+      dataControl.OMDbSearch($('#searchCrit').val())
+        .then(function(OMDbSearchResults) {
+        console.log("OMDbSearchResults", OMDbSearchResults);
+        //after resutls come back calls get user movies
+        dataControl.getUsersMovies()
+          .then(function(firebaseMovies) {
+          //this only a check to see what movies are in the firebase account
+          console.log("firebaseMovies", firebaseMovies);
+          });
+        });
+    }
   });
 
   //deletes a movie from user account
@@ -79,10 +83,14 @@ requirejs(
   });
 
 
-  $(document).on('click', '#searchMyMoviesButton', function() {
+  $(document).keypress(function(e) {
+    if(e.which == 13){
+    $('#searchOverlay').css('display', 'none');
+    var searchCrit = $('#searchCrit').val();
+    $('#searchCrit').val("");
     var searchResultsArray;
     var combinedMoviesArray;
-    dataControl.OMDbSearch($('#searchText').val())
+    dataControl.OMDbSearch(searchCrit)
     .then(function(OMDbSearchResults) {
       searchResultsArray = OMDbSearchResults;
       dataControl.getUsersMovies()
@@ -107,7 +115,9 @@ requirejs(
         combinedMoviesArray = filteredSearchResultsArray.concat(firebaseMoviesArray);
         domControl.loadProfileHbs(combinedMoviesArray);
       });
-    });
+    });    
+    }
+
   });
 
   // dead function... i think
@@ -199,8 +209,8 @@ requirejs(
       });
     });
 
-    $(document).keypress(function(){
-      if(x===1){
+    $(document).keypress(function(e){
+      if(x===1 && e.which !== 13){
         $('#searchOverlay').show();
         $('#searchCrit').focus();
       }  

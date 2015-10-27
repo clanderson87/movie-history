@@ -6,7 +6,20 @@ $background-color: rgba(25,25,25, 0.2);
 .row {
 
 }
-
+.webTitle{
+  color: black;
+  position: fixed;
+  top:10px;
+  left:10px;
+  text-shadow: 2px 2px #FFF;
+  font-size: 4em;
+  z-index: 40;
+}
+.form-group{
+  color:white;
+  font-size: 2.5em;
+  text-shadow: 0px 0px #FFF;
+}
 #searchOverlay{
   display:none;
   position:fixed;
@@ -21,6 +34,12 @@ $background-color: rgba(25,25,25, 0.2);
     border:none;
     font-size: 7em;
     padding:0;
+    position: relative;
+    top: 50%;
+    margin:0 auto;
+    transform: translateY(-50%);
+    width:100%;
+    text-align: center;
   }
   input:focus{
     border:none;
@@ -82,6 +101,7 @@ header {
   height: 50px;
   .header{
     background-color: black;
+    border:none;
   }
   #searchMyMoviesButton{
     background-color: rgba(0,0,0,.3);

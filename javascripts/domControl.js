@@ -3,6 +3,7 @@ define(["jquery", "hbs", "bootstrap"], function($, hbs, bootstrap) {
 	return {
 		loadProfileHbs: function(allMoviesArray) {
 			require(['hbs!../templates/main'], function(mainTpl) {
+					$('.webTitle').hide();
 					$('.headerBar').show();
 					$('.filterButtonRow').show();
 					$('#myMovies').show();
